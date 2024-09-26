@@ -13,15 +13,20 @@ public class App {
         do {
             System.out.println("Список задач:");
             System.out.println("0. Выйти из программы");
+            System.out.println("1. Добавить пользователя");
             System.out.print("Введите номер задачи: ");
-            int task = input.nextInt();input.nextLine(); // Используем input
+            int task = input.nextInt(); input.nextLine(); // Используем input
             switch (task) {
                 case 0:
                     System.out.println("Выход из программы");
                     repeat = false;
                     break;
+                    case 1:
+                    System.out.println("1. Добавить пользователя");
+                    break;
                 default:
                     System.out.println("Выберите номер из списка задач!");
+                    break;
             }
         } while (repeat);
     }

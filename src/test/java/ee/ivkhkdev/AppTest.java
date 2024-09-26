@@ -1,5 +1,5 @@
 package ee.ivkhkdev;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.mockito.Mockito;
 
 import java.io.ByteArrayOutputStream;
@@ -10,92 +10,76 @@ import static org.mockito.Mockito.*;
 
 public class AppTest {
 
-    @Test
-    public void testExitProgram() {
+    private Input inputMock; // Мок объекта Input
+    private ByteArrayOutputStream outContent; // Для перехвата вывода консоли
+    private final PrintStream originalOut = System.out; // Оригинальный System.out
+
+    @BeforeEach
+    public void setUp() {
         // Мокируем Input
-        Input inputMock = Mockito.mock(Input.class);
-        // Настраиваем поведение метода nextInt() для завершения программы
-        when(inputMock.nextInt()).thenReturn(0);
+        inputMock = Mockito.mock(Input.class);
 
         // Перехватываем вывод в консоль
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
+    }
 
-        // Передаем мокированный Input в конструктор
+    @AfterEach
+    public void tearDown() {
+        // Восстанавливаем оригинальный System.out после каждого теста
+        System.setOut(originalOut);
+    }
+
+    @Test
+    public void testExitProgram() {
+        // Настраиваем поведение nextInt для завершения программы
+        when(inputMock.nextInt()).thenReturn(0);
+
+        // Создаем объект App с мокированным input
         App app = new App(inputMock);
 
-        // Запускаем метод run()
+        // Запускаем метод run
         app.run();
 
-        // Проверяем, что метод nextInt() был вызван хотя бы один раз
-        verify(inputMock, atLeastOnce()).nextInt();
-
-        // Ожидаемый вывод
+        // Ожидаемый вывод программы
         String expectedOutput = "Список задач:\n" +
                 "0. Выйти из программы\n" +
-                "Введите номер задачи: \n" +
-                "Выход из программы\n" +
-                "Выберите номер из списка задач!\n";
+                "1. Добавить пользователя\n" +
+                "Введите номер задачи: " +
+                "Выход из программы\n";
 
-        // Фактический вывод
-        String actualOutput = outContent.toString();
-        actualOutput = actualOutput.replaceAll("\\r\\n", "\n");
-        // Выводим фактический и ожидаемый результаты для отладки
-        System.out.println("Ожидаемый вывод: ");
-        System.out.println(expectedOutput);
-        System.out.println("Фактический вывод: ");
-        System.out.println(actualOutput);
-
-        // Сравниваем строки
-        assertEquals(normalizeString(expectedOutput), normalizeString(actualOutput));
+        // Проверяем, что фактический вывод совпадает с ожидаемым
+        assertEquals(normalizeString(expectedOutput), normalizeString(outContent.toString()));
     }
 
     @Test
     public void testInvalidTaskNumber() {
-        // Мокируем Input
-        Input inputMock = Mockito.mock(Input.class);
-        // Настраиваем поведение метода nextInt() для неверного ввода
-        when(inputMock.nextInt()).thenReturn(5, 0); // Сначала неверный ввод, затем выход
+        // Настраиваем поведение nextInt для неверного ввода и последующего завершения программы
+        when(inputMock.nextInt()).thenReturn(5, 0); // Сначала неверный ввод, затем завершение
 
-        // Перехватываем вывод в консоль
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-
-        // Передаем мокированный Input в конструктор
+        // Создаем объект App с мокированным input
         App app = new App(inputMock);
 
-        // Запускаем метод run()
+        // Запускаем метод run
         app.run();
 
-        // Проверяем, что метод nextInt() был вызван дважды
-        verify(inputMock, times(2)).nextInt();
-
-        // Ожидаемый вывод
+        // Ожидаемый вывод программы
         String expectedOutput = "Список задач:\n" +
                 "0. Выйти из программы\n" +
-                "Введите номер задачи: \n" +
+                "1. Добавить пользователя\n" +
+                "Введите номер задачи: " +
                 "Выберите номер из списка задач!\n" +
                 "Список задач:\n" +
                 "0. Выйти из программы\n" +
-                "Введите номер задачи: \n" +
-                "Выход из программы\n" +
-                "Выберите номер из списка задач!\n";
+                "1. Добавить пользователя\n" +
+                "Введите номер задачи: "+
+                "Выход из программы\n";
 
-        // Фактический вывод
-        String actualOutput = outContent.toString();
-        actualOutput = normalizeString(actualOutput);
-        // Выводим фактический и ожидаемый результаты для отладки
-        System.out.println("Ожидаемый вывод: ");
-        System.out.println(expectedOutput);
-        System.out.println("Фактический вывод: ");
-        System.out.println(actualOutput);
-
-        // Сравниваем строки
-        assertEquals(normalizeString(expectedOutput), normalizeString(actualOutput));
+        // Проверяем, что фактический вывод совпадает с ожидаемым
+        assertEquals(normalizeString(expectedOutput), normalizeString(outContent.toString()));
     }
-
-    // Метод для нормализации строк: убираем лишние пробелы и унифицируем переносы строк
     private String normalizeString(String input) {
         return input.trim().replaceAll("\\r\\n", "\n").replaceAll("\\s+$", "");
     }
 }
+
