@@ -1,8 +1,10 @@
-package ee.ivkhkdev;
+package ee.ivkhkdev.tools;
+
+import ee.ivkhkdev.interfaces.Input;
 
 import java.util.Scanner;
 
-public class ConsoleInput implements Input{
+public class ConsoleInput implements Input {
     private Scanner scanner;
 
     public ConsoleInput(Scanner scanner) {

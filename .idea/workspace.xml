@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e142171b-185c-4bd1-9aa0-dcf7def45749" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/model/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/service/CustomizerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/tools/InputCustomer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/ConsoleInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/tools/ConsoleInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/interfaces/Input.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ee/ivkhkdev/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ee/ivkhkdev/AppTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,9 +33,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2mb1qFkC6dQGJrjPcODKWd5XSbm" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -39,9 +46,11 @@
   "keyToString": {
     "Application.Main.executor": "Run",
     "JUnit.AppTest.executor": "Run",
+    "JUnit.AppTest.testAddCustomer.executor": "Run",
     "JUnit.AppTest.testExitProgram.executor": "Debug",
-    "JUnit.AppTest.testInvalidTaskNumber.executor": "Debug",
+    "JUnit.AppTest.testInvalidTaskNumber.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "git-widget-placeholder": "main",
@@ -57,6 +66,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="ee.ivkhkdev.model" />
+      <recent name="ee.ivkhkdev.service" />
       <recent name="ee.ivkhkdev" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
@@ -66,13 +77,13 @@
       <recent name="ee.ivkhkdev" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AppTest">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ee.ivkhkdev.Main" />
       <module name="JPTV23Library" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ee.ivkhkdev.*" />
+          <option name="PATTERN" value="ee.ivkhkdev.interfaces.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -84,7 +95,7 @@
       <module name="JPTV23Library" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ee.ivkhkdev.*" />
+          <option name="PATTERN" value="ee.ivkhkdev.interfaces.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -95,11 +106,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AppTest.testExitProgram" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AppTest.testAddCustomer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JPTV23Library" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ee.ivkhkdev.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ee.ivkhkdev" />
+      <option name="MAIN_CLASS_NAME" value="ee.ivkhkdev.AppTest" />
+      <option name="METHOD_NAME" value="testAddCustomer" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppTest.testExitProgram" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JPTV23Library" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ee.ivkhkdev.interfaces.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -115,7 +142,7 @@
       <module name="JPTV23Library" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ee.ivkhkdev.*" />
+          <option name="PATTERN" value="ee.ivkhkdev.interfaces.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -129,10 +156,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AppTest" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.AppTest.testExitProgram" />
+        <item itemvalue="JUnit.AppTest.testAddCustomer" />
+        <item itemvalue="JUnit.AppTest" />
         <item itemvalue="JUnit.AppTest.testInvalidTaskNumber" />
+        <item itemvalue="JUnit.AppTest.testExitProgram" />
       </list>
     </recent_temporary>
   </component>
@@ -160,15 +188,6 @@
     <option name="version" value="3" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/ee/ivkhkdev/AppTest.java</url>
-          <line>51</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
         <watch expression="this" />

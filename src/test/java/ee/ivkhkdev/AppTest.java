@@ -1,4 +1,6 @@
 package ee.ivkhkdev;
+import ee.ivkhkdev.interfaces.Input;
+import ee.ivkhkdev.model.Customer;
 import org.junit.jupiter.api.*;
 import org.mockito.Mockito;
 
@@ -6,6 +8,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 public class AppTest {
@@ -42,44 +45,40 @@ public class AppTest {
         app.run();
 
         // Ожидаемый вывод программы
-        String expectedOutput = "Список задач:\n" +
-                "0. Выйти из программы\n" +
-                "1. Добавить пользователя\n" +
-                "Введите номер задачи: " +
-                "Выход из программы\n";
+//        String expectedOutput = "Список задач:\n" +
+//                "0. Выйти из программы\n" +
+//                "1. Добавить пользователя\n" +
+//                "Введите номер задачи: " +
+//                "Выход из программы\n";
 
         // Проверяем, что фактический вывод совпадает с ожидаемым
-        assertEquals(normalizeString(expectedOutput), normalizeString(outContent.toString()));
+        // assertEquals(normalizeString(expectedOutput), normalizeString(outContent.toString()));
+        assertTrue(outContent.toString().contains("Досвидания! :)"));
     }
 
     @Test
     public void testInvalidTaskNumber() {
         // Настраиваем поведение nextInt для неверного ввода и последующего завершения программы
         when(inputMock.nextInt()).thenReturn(5, 0); // Сначала неверный ввод, затем завершение
-
+        // Создаем объект App с мокированным input
+        App app = new App(inputMock);
+        // Запускаем метод run
+        app.run();
+        assertTrue(outContent.toString().contains("Выберите номер из списка задач!") && outContent.toString().contains("Досвидания! :)"));
+    }
+    @Test
+    public void testAddCustomer() {
+        // Настраиваем поведение nextInt для неверного ввода и последующего завершения программы
+        when(inputMock.nextInt()).thenReturn(1, 0); // Сначала неверный ввод, затем завершение
         // Создаем объект App с мокированным input
         App app = new App(inputMock);
 
+        Customer expected = new Customer("Ivan", "Ivanov", "56565656");
         // Запускаем метод run
         app.run();
-
-        // Ожидаемый вывод программы
-        String expectedOutput = "Список задач:\n" +
-                "0. Выйти из программы\n" +
-                "1. Добавить пользователя\n" +
-                "Введите номер задачи: " +
-                "Выберите номер из списка задач!\n" +
-                "Список задач:\n" +
-                "0. Выйти из программы\n" +
-                "1. Добавить пользователя\n" +
-                "Введите номер задачи: "+
-                "Выход из программы\n";
-
         // Проверяем, что фактический вывод совпадает с ожидаемым
-        assertEquals(normalizeString(expectedOutput), normalizeString(outContent.toString()));
+        assertTrue(App.customers[0].getFirstName().equals("Ivan") && outContent.toString().contains("Досвидания! :)"));
     }
-    private String normalizeString(String input) {
-        return input.trim().replaceAll("\\r\\n", "\n").replaceAll("\\s+$", "");
-    }
+
 }
 

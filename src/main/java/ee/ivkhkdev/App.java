@@ -1,7 +1,14 @@
 package ee.ivkhkdev;
 
+import ee.ivkhkdev.interfaces.Input;
+import ee.ivkhkdev.model.Customer;
+import ee.ivkhkdev.service.CustomizerService;
+
+import java.beans.Customizer;
+
 public class App {
     private Input input;
+    public static Customer[] customers = new Customer[100];
 
     // Теперь в конструктор передается Input вместо Scanner
     public App(Input input) {
@@ -23,11 +30,14 @@ public class App {
                     break;
                     case 1:
                     System.out.println("1. Добавить пользователя");
+                        CustomizerService customizerService = new CustomizerService();
+                        customizerService.createCustomer();
                     break;
                 default:
                     System.out.println("Выберите номер из списка задач!");
                     break;
             }
         } while (repeat);
+        System.out.println("Досвидания! :)");
     }
 }
