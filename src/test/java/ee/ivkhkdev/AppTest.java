@@ -22,9 +22,7 @@ public class AppTest {
         // Мокируем Input
         inputMock = Mockito.mock(Input.class);
 
-        // Перехватываем вывод в консоль
-        outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
+
     }
 
     @AfterEach
@@ -36,48 +34,63 @@ public class AppTest {
     @Test
     public void testExitProgram() {
         // Настраиваем поведение nextInt для завершения программы
-        when(inputMock.nextInt()).thenReturn(0);
-
+        when(inputMock.nextLine()).thenReturn("0");
+        // Перехватываем вывод в консоль
+        outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
         // Создаем объект App с мокированным input
         App app = new App(inputMock);
 
         // Запускаем метод run
         app.run();
-
+        System.setOut(originalOut);
+        System.out.println(outContent.toString());
         // Ожидаемый вывод программы
-//        String expectedOutput = "Список задач:\n" +
+//        String expectedOutput =
+//                "Список задач:\n" +
 //                "0. Выйти из программы\n" +
 //                "1. Добавить пользователя\n" +
-//                "Введите номер задачи: " +
-//                "Выход из программы\n";
+//                "Введите номер задачи: " + "Выход из программы\n";
+//                 До свидания! :)
 
         // Проверяем, что фактический вывод совпадает с ожидаемым
         // assertEquals(normalizeString(expectedOutput), normalizeString(outContent.toString()));
-        assertTrue(outContent.toString().contains("Досвидания! :)"));
+
+        assertTrue(outContent.toString().contains("До свидания! :)"));
     }
 
     @Test
     public void testInvalidTaskNumber() {
         // Настраиваем поведение nextInt для неверного ввода и последующего завершения программы
-        when(inputMock.nextInt()).thenReturn(5, 0); // Сначала неверный ввод, затем завершение
+        when(inputMock.nextLine()).thenReturn("5", "0"); // Сначала неверный ввод, затем завершение
         // Создаем объект App с мокированным input
+        // Перехватываем вывод в консоль
+        outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
         App app = new App(inputMock);
         // Запускаем метод run
         app.run();
-        assertTrue(outContent.toString().contains("Выберите номер из списка задач!") && outContent.toString().contains("Досвидания! :)"));
+        System.setOut(originalOut);
+        System.out.println(outContent.toString());
+        assertTrue(outContent.toString().contains("Выберите номер из списка задач!") && outContent.toString().contains("До свидания! :)"));
     }
     @Test
     public void testAddCustomer() {
-        // Настраиваем поведение nextInt для неверного ввода и последующего завершения программы
-        when(inputMock.nextInt()).thenReturn(1, 0); // Сначала неверный ввод, затем завершение
-        // Создаем объект App с мокированным input
-        App app = new App(inputMock);
 
-        Customer expected = new Customer("Ivan", "Ivanov", "56565656");
+        when(inputMock.nextLine()).thenReturn("1", "Ivan","Ivanov", "56565656","0");
+        // Создаем объект App с мокированным input
+        // Перехватываем вывод в консоль
+        outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        App app = new App(inputMock);
         // Запускаем метод run
         app.run();
+        System.setOut(originalOut);
+        System.out.println(outContent.toString());
+        Customer expected = new Customer("Ivan", "Ivanov", "56565656");
         // Проверяем, что фактический вывод совпадает с ожидаемым
-        assertTrue(App.customers[0].getFirstName().equals("Ivan") && outContent.toString().contains("Досвидания! :)"));
+        assertTrue(App.customers[0].getFirstName().equals("Ivan") && outContent.toString().contains("До свидания! :)"));
     }
 
 }
