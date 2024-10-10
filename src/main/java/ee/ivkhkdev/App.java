@@ -1,14 +1,13 @@
 package ee.ivkhkdev;
 
 import ee.ivkhkdev.interfaces.Input;
-import ee.ivkhkdev.model.Customer;
-import ee.ivkhkdev.service.CustomizerService;
-
-import java.beans.Customizer;
+import ee.ivkhkdev.model.User;
+import ee.ivkhkdev.service.UserService;
 
 public class App {
     private Input input;
-    public static Customer[] customers = new Customer[100];
+    public static User[] users = new User[100];
+    private UserService userService = new UserService();
 
     // Теперь в конструктор передается Input вместо Scanner
     public App(Input input) {
@@ -17,10 +16,12 @@ public class App {
 
     public void run() {
         boolean repeat = true;
+        System.out.println("======= JPTV23Library =========");
         do {
             System.out.println("Список задач:");
             System.out.println("0. Выйти из программы");
             System.out.println("1. Добавить пользователя");
+            System.out.println("2. Список пользователей");
             System.out.print("Введите номер задачи: ");
             int task = Integer.parseInt(input.nextLine()); // Используем input
             switch (task) {
@@ -30,13 +31,20 @@ public class App {
                     break;
                 case 1:
                     System.out.println("1. Добавить пользователя");
-                        CustomizerService customizerService = new CustomizerService();
-                        customizerService.createCustomer(input);
+                        if(userService.addUser(input)){
+                            System.out.println("Пользователь добавлен");
+                        }else{
+                            System.out.println("Пользователя добавить не удалось");
+                        };
+                    break;
+                case 2:
+                    userService.printList();
                     break;
                 default:
                     System.out.println("Выберите номер из списка задач!");
                     break;
             }
+            System.out.println("==============================");
         } while (repeat);
         System.out.println("До свидания! :)");
     }
