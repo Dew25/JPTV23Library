@@ -1,4 +1,4 @@
-package ee.ivkhkdev.service;
+package ee.ivkhkdev.services;
 
 import ee.ivkhkdev.App;
 import ee.ivkhkdev.interfaces.Input;
@@ -8,7 +8,7 @@ import ee.ivkhkdev.helpers.AppInputHelper;
 public class UserService {
     private AppInputHelper appInputHelper = new AppInputHelper();
 
-    public boolean addUser(Input input) {
+    public boolean add(Input input) {
         User user = appInputHelper.cerateUser(input);
         if(user == null ) return false;
         for (int i = 0; i < App.users.length; i++){
@@ -20,7 +20,7 @@ public class UserService {
         return true;
     }
 
-    public void printList() {
-        appInputHelper.printListUsers();
+    public boolean printList() {
+        return appInputHelper.printListUsers();
     }
 }
