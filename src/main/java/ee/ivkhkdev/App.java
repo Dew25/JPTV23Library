@@ -15,15 +15,20 @@ public class App {
     private Input input;
     public List<User> users = new ArrayList<>();
     public List<Book> books = new ArrayList<>();
-    private Storage<User> storageUser = new Storage<>("users");
-    private AppInputHelper appInputHelper = new AppInputHelper(input);
-    private UserService userService = new UserService(appInputHelper,storageUser);
-    private Storage<Book> storageBook = new Storage<>("books");
-    private BookService bookService = new BookService(appInputHelper,storageBook);
+    private AppInputHelper appInputHelper;
+    private Storage<User> storageUser;
+    private UserService userService;
+    private Storage<Book> storageBook;
+    private BookService bookService;
 
     // Теперь в конструктор передается Input вместо Scanner
     public App(Input input) {
         this.input = input;
+        appInputHelper = new AppInputHelper(input);
+        storageUser = new Storage<>("users");
+        userService = new UserService(appInputHelper,storageUser);
+        storageBook = new Storage<>("books");
+        bookService = new BookService(appInputHelper,storageBook);
     }
 
     public void run() {

@@ -11,7 +11,7 @@ import java.util.List;
 
 public class BookService {
 
-    private final Storage<Book> storage;
+    private Storage<Book> storage;
     private AppInputHelper appInputHelper;
 
     public BookService(AppInputHelper appInputHelper, Storage<Book> storage) {

@@ -92,7 +92,7 @@ public class AppTest {
         Storage<Book> sorageMock = Mockito.mock(Storage.class);
         BookService bookService = new BookService(appInputHelperMock,sorageMock);
         boolean result = bookService.add(booksMock);
-        verify(sorageMock,times(1)).save(booksMock);
+        verify(sorageMock).save(booksMock);
         assertTrue(result);
     }
 }

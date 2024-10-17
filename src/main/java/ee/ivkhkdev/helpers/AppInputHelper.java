@@ -9,7 +9,7 @@ import ee.ivkhkdev.model.User;
 import java.util.List;
 
 public class AppInputHelper {
-    private final Input input;
+    private Input input;
 
     public AppInputHelper(Input input) {
         this.input = input;
