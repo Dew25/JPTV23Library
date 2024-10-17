@@ -6,24 +6,36 @@ import ee.ivkhkdev.model.Author;
 import ee.ivkhkdev.model.Book;
 import ee.ivkhkdev.model.User;
 
-public class AppInputHelper {
+import java.util.List;
 
-    public User cerateUser(Input input){
-        User user = new User();
-        System.out.print("Имя пользователя: ");
-        user.setFirstName(input.nextLine());
-        System.out.print("Фамилия пользователя: ");
-        user.setLastName(input.nextLine());
-        System.out.print("Телефон: ");
-        user.setPhone(input.nextLine());
-        return user;
+public class AppInputHelper {
+    private final Input input;
+
+    public AppInputHelper(Input input) {
+        this.input = input;
     }
 
-    public boolean printListUsers() {
+    public User cerateUser(){
+        try {
+            User user = new User();
+            System.out.print("Имя пользователя: ");
+            user.setFirstName(input.nextLine());
+            System.out.print("Фамилия пользователя: ");
+            user.setLastName(input.nextLine());
+            System.out.print("Телефон: ");
+            user.setPhone(input.nextLine());
+            return user;
+        }catch (Exception e){
+            return null;
+        }
+
+    }
+
+    public boolean printListUsers(List<User> users) {
         try {
             System.out.println("Список пользователей:");
-            for (int i=0;i< App.users.length;i++){
-                User user = App.users[i];
+            for (int i=0;i< users.size();i++){
+                User user = users.get(i);
                 if(user != null){
                     System.out.printf("%d. %s %s. %s%n",
                             i+1,
@@ -40,7 +52,7 @@ public class AppInputHelper {
         }
     }
 
-    public Book cerateBook(Input input) {
+    public Book cerateBook() {
         try {
             Book book = new Book();
             System.out.print("Название книги: ");
@@ -54,7 +66,7 @@ public class AppInputHelper {
                 author.setFirstname(input.nextLine());
                 System.out.print("Фамилия: ");
                 author.setLastname(input.nextLine());
-                book.getAuthors()[i] = author;
+                book.getAuthors().add(author);
             }
             System.out.print("Год издания: ");
             book.setPublishedYear(Integer.parseInt(input.nextLine()));

@@ -5,17 +5,31 @@ import ee.ivkhkdev.helpers.AppInputHelper;
 import ee.ivkhkdev.interfaces.Input;
 import ee.ivkhkdev.model.Book;
 import ee.ivkhkdev.model.User;
+import ee.ivkhkdev.storages.Storage;
+
+import java.util.List;
 
 public class BookService {
 
-    private AppInputHelper appInputHelper = new AppInputHelper();
+    private final Storage<Book> storage;
+    private AppInputHelper appInputHelper;
 
-    public boolean add(Input input) {
-        Book book = appInputHelper.cerateBook(input);
+    public BookService(AppInputHelper appInputHelper, Storage<Book> storage) {
+        this.appInputHelper = appInputHelper;
+        this.storage = storage;
+    }
+
+    public boolean add(List<Book> books) {
+        Book book = appInputHelper.cerateBook();
         if(book == null ) return false;
-        for (int i = 0; i < App.books.length; i++){
-            if(App.books[i] == null){
-                App.books[i] = book;
+        for (int i = 0; i <= books.size(); i++){
+            if(i == 0 ){
+                books.add(book);
+                storage.save(books);
+                break;
+            }else if(books.get(i) == null) {
+                books.add(book);
+                storage.save(books);
                 break;
             }
         }

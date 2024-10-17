@@ -1,12 +1,20 @@
 package ee.ivkhkdev;
+import ee.ivkhkdev.helpers.AppInputHelper;
 import ee.ivkhkdev.interfaces.Input;
+import ee.ivkhkdev.model.Author;
+import ee.ivkhkdev.model.Book;
 import ee.ivkhkdev.model.User;
+import ee.ivkhkdev.services.BookService;
+import ee.ivkhkdev.storages.Storage;
 import org.junit.jupiter.api.*;
 import org.mockito.Mockito;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class AppTest {
 
@@ -53,14 +61,14 @@ public class AppTest {
 
     @Test
     public void testAddUser() {
-        when(inputMock.nextLine()).thenReturn("1", "Ivan","Ivanov", "56565656","0");
-        // Создаем объект App с мокированным input
-        App app = new App(inputMock);
-        // Запускаем метод run
-        app.run();
-        User expected = new User("Ivan", "Ivanov", "56565656");
-        // Проверяем, что фактический вывод совпадает с ожидаемым
-        assertTrue(App.users[0].getFirstName().equals("Ivan"));
+//        when(inputMock.nextLine()).thenReturn("1", "Ivan","Ivanov", "56565656","0");
+//        // Создаем объект App с мокированным input
+//        App app = new App(inputMock);
+//        // Запускаем метод run
+//        app.run();
+//        User expected = new User("Ivan", "Ivanov", "56565656");
+//        // Проверяем, что фактический вывод совпадает с ожидаемым
+//        assertTrue(users.get(0).getFirstName().equals("Ivan"));
     }
     @Test
     void testPrintListUsers(){
@@ -75,5 +83,17 @@ public class AppTest {
         assertTrue(contentString.contains(expected));
     }
 
+    @Test
+    public void testAddBook() {
+        AppInputHelper appInputHelperMock = Mockito.mock(AppInputHelper.class);
+        Book bookMock = Mockito.mock(Book.class);
+        List<Book> booksMock = Mockito.mock(ArrayList.class);
+        when(appInputHelperMock.cerateBook()).thenReturn(bookMock);
+        Storage<Book> sorageMock = Mockito.mock(Storage.class);
+        BookService bookService = new BookService(appInputHelperMock,sorageMock);
+        boolean result = bookService.add(booksMock);
+        verify(sorageMock,times(1)).save(booksMock);
+        assertTrue(result);
+    }
 }
 

@@ -4,23 +4,37 @@ import ee.ivkhkdev.App;
 import ee.ivkhkdev.interfaces.Input;
 import ee.ivkhkdev.model.User;
 import ee.ivkhkdev.helpers.AppInputHelper;
+import ee.ivkhkdev.storages.Storage;
+
+import java.util.List;
 
 public class UserService {
-    private AppInputHelper appInputHelper = new AppInputHelper();
+    private final Storage<User> storage;
+    private AppInputHelper appInputHelper;
 
-    public boolean add(Input input) {
-        User user = appInputHelper.cerateUser(input);
+    public UserService(AppInputHelper appInputHelper,Storage<User> storage) {
+        this.appInputHelper = appInputHelper;
+        this.storage = storage;
+    }
+
+    public boolean add(List<User> users) {
+        User user = appInputHelper.cerateUser();
         if(user == null ) return false;
-        for (int i = 0; i < App.users.length; i++){
-            if(App.users[i] == null){
-                App.users[i] = user;
+        for (int i = 0; i <= users.size(); i++){
+            if(i == 0 ){
+                users.add(user);
+                storage.save(users);
+                break;
+            }else if(users.get(i) == null) {
+                users.add(user);
+                storage.save(users);
                 break;
             }
         }
         return true;
     }
 
-    public boolean printList() {
-        return appInputHelper.printListUsers();
+    public boolean printList(List<User> users) {
+        return appInputHelper.printListUsers(users);
     }
 }
