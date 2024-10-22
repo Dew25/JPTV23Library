@@ -1,21 +1,24 @@
 package ee.ivkhkdev.storages;
 
-import ee.ivkhkdev.App;
-import ee.ivkhkdev.model.Book;
-import ee.ivkhkdev.model.User;
+
+import ee.ivkhkdev.repositories.Repository;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
-public class Storage<T> {
+public class Storage<T> implements Repository<T> {
 
-    private final String fileName;
+    private String fileName;
 
     public Storage(String fileName) {
         this.fileName = fileName;
     }
-
-    public void save(List<T> entities){
+    @Override
+    public void save(T entity){
+        List<T> entities = this.load();
+        if(entities == null) entities = new ArrayList<>();
+        entities.add(entity);
         FileOutputStream fileOutputStream;
         ObjectOutputStream objectOutputStream;
         try {
@@ -30,6 +33,10 @@ public class Storage<T> {
             System.out.println("Ошибка ввода");
         }
     }
+
+
+
+    @Override
     public List<T> load(){
         FileInputStream fileInputStream;
         ObjectInputStream objectInputStream;
@@ -44,6 +51,6 @@ public class Storage<T> {
         } catch (ClassNotFoundException e) {
             System.out.println("Не найден класс ");
         }
-        return null;
+        return new ArrayList<>();
     }
 }

@@ -1,38 +1,48 @@
 package ee.ivkhkdev.services;
 
-import ee.ivkhkdev.App;
-import ee.ivkhkdev.helpers.AppInputHelper;
-import ee.ivkhkdev.interfaces.Input;
+import ee.ivkhkdev.helpers.AppHelper;
 import ee.ivkhkdev.model.Book;
-import ee.ivkhkdev.model.User;
-import ee.ivkhkdev.storages.Storage;
+import ee.ivkhkdev.repositories.Repository;
+
 
 import java.util.List;
 
-public class BookService {
+public class BookService implements Service{
 
-    private Storage<Book> storage;
-    private AppInputHelper appInputHelper;
+    private final List<Book> books;
+    private Repository<Book> repository;
+    private AppHelper appHelperBook;
 
-    public BookService(AppInputHelper appInputHelper, Storage<Book> storage) {
-        this.appInputHelper = appInputHelper;
-        this.storage = storage;
+    public BookService(List<Book> books, AppHelper appHelperBook, Repository<Book> repository) {
+        this.books = books;
+        this.appHelperBook = appHelperBook;
+        this.repository = repository;
+    }
+    public boolean add(){
+        try {
+            Book book = (Book) appHelperBook.create();
+            if(book == null) return false;
+            for (int i = 0; i <= books.size(); i++){
+                if(i == 0 ){
+                    books.add(book);
+                    repository.save(book);
+                    break;
+                }else if(books.get(i) == null){
+                    books.add(book);
+                    repository.save(book);
+                    break;
+                }
+            }
+            return true;
+        }catch (Exception e){
+            System.out.println("Error: "+e.toString());
+            return false;
+        }
+
     }
 
-    public boolean add(List<Book> books) {
-        Book book = appInputHelper.cerateBook();
-        if(book == null ) return false;
-        for (int i = 0; i <= books.size(); i++){
-            if(i == 0 ){
-                books.add(book);
-                storage.save(books);
-                break;
-            }else if(books.get(i) == null) {
-                books.add(book);
-                storage.save(books);
-                break;
-            }
-        }
-        return true;
+    @Override
+    public boolean printList() {
+        return appHelperBook.printList(books);
     }
 }
