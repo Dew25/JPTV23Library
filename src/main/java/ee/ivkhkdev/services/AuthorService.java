@@ -10,16 +10,16 @@ public class AuthorService implements Service{
 
     private final List<Author> authors;
     private Repository<Author> repository;
-    private AppHelper appHelperAuthor;
+    private AppHelper<Author> appHelperAuthor;
 
-    public AuthorService(List<Author> authors, AppHelper appHelperAuthor, Repository<Author> repository) {
+    public AuthorService(List<Author> authors, AppHelper<Author> appHelperAuthor, Repository<Author> repository) {
         this.authors = authors;
         this.appHelperAuthor = appHelperAuthor;
         this.repository = repository;
     }
 
     public boolean add(){
-        Author author = (Author) appHelperAuthor.create();
+        Author author = appHelperAuthor.create();
         if(author == null) return false;
         try {
             for (int i = 0; i <= authors.size(); i++){
@@ -41,11 +41,12 @@ public class AuthorService implements Service{
     }
 
     @Override
-    public boolean printList() {
+    public boolean print() {
         return appHelperAuthor.printList(authors);
     }
 
-    public List<Author> getAuthors() {
+    @Override
+    public List<Author> list() {
         return authors;
     }
 }

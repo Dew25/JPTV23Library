@@ -1,18 +1,18 @@
 package ee.ivkhkdev.helpers;
 
-import ee.ivkhkdev.interfaces.Input;
+import ee.ivkhkdev.input.Input;
 import ee.ivkhkdev.model.Author;
 import ee.ivkhkdev.model.Book;
-import ee.ivkhkdev.services.AuthorService;
+import ee.ivkhkdev.services.Service;
 
 import java.util.List;
 
 public class AppHelperBook implements AppHelper<Book> {
 
     private final Input input;
-    private final AuthorService authorService;
+    private final Service<Author> authorService;
 
-    public AppHelperBook(Input input, AuthorService authorService) {
+    public AppHelperBook(Input input, Service<Author> authorService) {
         this.input = input;
         this.authorService = authorService;
     }
@@ -23,7 +23,7 @@ public class AppHelperBook implements AppHelper<Book> {
         try {
             System.out.print("Название книги: ");
             book.setTitle(input.nextLine());
-            authorService.printList();
+            authorService.print();
             System.out.print("Добавить автора в список (y/n): ");
             String addAuthorChoose = input.nextLine();
             if(addAuthorChoose.equals("y")){
@@ -35,7 +35,7 @@ public class AppHelperBook implements AppHelper<Book> {
             for (int i = 0; i < countBookAuthors; i++){
                 System.out.printf("Выберите номер автора из списка (%d автор из %d%n): ", i+1,countBookAuthors);
                 int numberAuthor = Integer.parseInt(input.nextLine());
-                book.getAuthors().add(authorService.getAuthors().get(numberAuthor-1));
+                book.getAuthors().add(authorService.list().get(numberAuthor-1));
             }
             System.out.print("Год издания книги: ");
             book.setPublishedYear(Integer.parseInt(input.nextLine()));
@@ -45,9 +45,6 @@ public class AppHelperBook implements AppHelper<Book> {
             return null;
         }
     }
-
-
-
 
     @Override
     public boolean printList(List<Book> books) {

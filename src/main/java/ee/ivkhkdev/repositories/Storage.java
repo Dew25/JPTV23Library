@@ -1,7 +1,5 @@
-package ee.ivkhkdev.storages;
+package ee.ivkhkdev.repositories;
 
-
-import ee.ivkhkdev.repositories.Repository;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -26,7 +24,6 @@ public class Storage<T> implements Repository<T> {
             objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(entities);
             objectOutputStream.flush();
-
         } catch (FileNotFoundException e) {
             System.out.println("Не найден файл");
         } catch (IOException e) {

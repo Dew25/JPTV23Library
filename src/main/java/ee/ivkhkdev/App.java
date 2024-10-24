@@ -1,16 +1,17 @@
 package ee.ivkhkdev;
 
 import ee.ivkhkdev.helpers.*;
-import ee.ivkhkdev.interfaces.Input;
-import ee.ivkhkdev.interfaces.impl.ConsoleInput;
+import ee.ivkhkdev.input.Input;
+import ee.ivkhkdev.input.ConsoleInput;
 import ee.ivkhkdev.model.Author;
 import ee.ivkhkdev.model.Book;
 import ee.ivkhkdev.model.User;
 import ee.ivkhkdev.repositories.Repository;
 import ee.ivkhkdev.services.AuthorService;
+import ee.ivkhkdev.services.Service;
 import ee.ivkhkdev.services.UserService;
 import ee.ivkhkdev.services.BookService;
-import ee.ivkhkdev.storages.Storage;
+import ee.ivkhkdev.repositories.Storage;
 import java.util.List;
 import java.util.Scanner;
 
@@ -19,31 +20,26 @@ public class App {
     public List<User> users;
     public List<Book> books;
     public List<Author> authors;
-
     private AppHelper appHelperAuthor;
     private AppHelper appHelperBook;
     private AppHelper appHelperUser;
     private Repository<Author> authorRepository;
     private Repository<User> userRepository;
     private Repository<Book> bookRepository;
-    private UserService userService;
-    private BookService bookService;
-    private AuthorService authorService;
+    private Service<User> userService;
+    private Service<Book> bookService;
+    private Service<Author> authorService;
 
-    // Теперь в конструктор передается Input вместо Scanner
     public App() {
         userRepository = new Storage<>("users");
         bookRepository = new Storage<>("books");
         authorRepository = new Storage<>("authors");
-
         this.users = this.userRepository.load();
         this.authors = this.authorRepository.load();
         this.books = this.bookRepository.load();
         this.input = new ConsoleInput(new Scanner(System.in));
-
         appHelperUser = new AppHelperUser(input);
         appHelperAuthor = new AppHelperAuthor(input);
-
         userService = new UserService(users,appHelperUser,userRepository);
         authorService = new AuthorService(authors,appHelperAuthor,authorRepository);
         appHelperBook = new AppHelperBook(input,authorService);
@@ -77,7 +73,7 @@ public class App {
                         };
                     break;
                 case 2:
-                    if(userService.printList()){
+                    if(userService.print()){
                         System.out.println("----------- Конец списка -----------");
                     }
                     break;
@@ -90,7 +86,7 @@ public class App {
                     }
                     break;
                 case 4:
-                    if(bookService.printList()){
+                    if(bookService.print()){
                         System.out.println("----------- Конец списка -----------");
                     }
                     break;

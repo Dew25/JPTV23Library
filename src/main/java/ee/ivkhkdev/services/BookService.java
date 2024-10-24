@@ -11,16 +11,16 @@ public class BookService implements Service{
 
     private final List<Book> books;
     private Repository<Book> repository;
-    private AppHelper appHelperBook;
+    private AppHelper<Book> appHelperBook;
 
-    public BookService(List<Book> books, AppHelper appHelperBook, Repository<Book> repository) {
+    public BookService(List<Book> books, AppHelper<Book> appHelperBook, Repository<Book> repository) {
         this.books = books;
         this.appHelperBook = appHelperBook;
         this.repository = repository;
     }
     public boolean add(){
         try {
-            Book book = (Book) appHelperBook.create();
+            Book book = appHelperBook.create();
             if(book == null) return false;
             for (int i = 0; i <= books.size(); i++){
                 if(i == 0 ){
@@ -42,7 +42,12 @@ public class BookService implements Service{
     }
 
     @Override
-    public boolean printList() {
+    public boolean print() {
         return appHelperBook.printList(books);
+    }
+
+    @Override
+    public List list() {
+        return books;
     }
 }

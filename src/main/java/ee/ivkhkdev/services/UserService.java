@@ -10,16 +10,16 @@ import java.util.List;
 public class UserService implements Service{
     private final List<User> users;
     private final Repository<User> repository;
-    private AppHelper appHelperUser;
+    private AppHelper<User> appHelperUser;
 
-    public UserService(List<User> users, AppHelper appHelperUser, Repository<User> repository) {
+    public UserService(List<User> users, AppHelper<User> appHelperUser, Repository<User> repository) {
         this.users = users;
         this.appHelperUser = appHelperUser;
         this.repository = repository;
     }
 
     public boolean add() {
-        User user = (User) appHelperUser.create();
+        User user = appHelperUser.create();
         if(user == null ) return false;
         for (int i = 0; i <= users.size(); i++){
             if(i == 0 ){
@@ -35,7 +35,12 @@ public class UserService implements Service{
         return true;
     }
 
-    public boolean printList() {
+    public boolean print() {
         return appHelperUser.printList(users);
+    }
+
+    @Override
+    public List list() {
+        return users;
     }
 }

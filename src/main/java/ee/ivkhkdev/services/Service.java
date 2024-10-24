@@ -1,6 +1,9 @@
 package ee.ivkhkdev.services;
 
+import java.util.List;
+
 public interface Service<T> {
     boolean add();
-    boolean printList();
+    boolean print();
+    List<T> list();
 }

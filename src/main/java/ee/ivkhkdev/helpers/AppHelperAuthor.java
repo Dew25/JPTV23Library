@@ -1,8 +1,7 @@
 package ee.ivkhkdev.helpers;
 
-import ee.ivkhkdev.interfaces.Input;
+import ee.ivkhkdev.input.Input;
 import ee.ivkhkdev.model.Author;
-import ee.ivkhkdev.model.Book;
 
 import java.util.List;
 
