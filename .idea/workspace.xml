@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e142171b-185c-4bd1-9aa0-dcf7def45749" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/ee/ivkhkdev/services/AuthorServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ee/ivkhkdev/services/AuthorServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ee/ivkhkdev/services/AuthorServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +58,7 @@
     "JUnit.AppTest.testInvalidTaskNumber.executor": "Run",
     "JUnit.AppTest.testPrintListUsers.executor": "Run",
     "JUnit.AuthorServiceTest.add.executor": "Run",
+    "Maven.JPTV23Library [clean].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
@@ -231,7 +232,7 @@
       <workItem from="1729661023094" duration="60000" />
       <workItem from="1729761570033" duration="10442000" />
       <workItem from="1730096493365" duration="133000" />
-      <workItem from="1730183139587" duration="2798000" />
+      <workItem from="1730183139587" duration="3789000" />
     </task>
     <servers />
   </component>

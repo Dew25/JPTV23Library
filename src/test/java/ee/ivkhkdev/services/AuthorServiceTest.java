@@ -14,7 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.mockito.internal.verification.VerificationModeFactory.times;
 
 class AuthorServiceTest {
 
@@ -41,10 +44,14 @@ class AuthorServiceTest {
         assertTrue(result);
         // проверим, добавился ли в authors новый автор "Ivan"
         assertTrue(authors.get(1).getFirstname().equals("Ivan"));
+        // Проверяем, что метод save() вызывался один раз
+        verify(repositoryMock,times(1)).save(any(Author.class));
+
     }
 
     @Test
     void print() {
+
     }
 
     @Test
