@@ -5,22 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e142171b-185c-4bd1-9aa0-dcf7def45749" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/ee/ivkhkdev/helpers/AppHelperAuthorTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ee/ivkhkdev/helpers/AppHelperBookTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ee/ivkhkdev/helpers/AppHelperUserTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ee/ivkhkdev/services/AuthorServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/helpers/AppHelperAuthor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/helpers/AppHelperAuthor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/helpers/AppHelperBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/helpers/AppHelperBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/helpers/AppHelperUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/helpers/AppHelperUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/interfaces/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/input/Input.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/interfaces/impl/ConsoleInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/input/ConsoleInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/services/AuthorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/services/AuthorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/services/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/services/BookService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/services/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/services/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/storages/Storage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/repositories/Storage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +57,7 @@
     "JUnit.AppTest.testExitProgram.executor": "Run",
     "JUnit.AppTest.testInvalidTaskNumber.executor": "Run",
     "JUnit.AppTest.testPrintListUsers.executor": "Run",
+    "JUnit.AuthorServiceTest.add.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
@@ -104,6 +91,7 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="ee.ivkhkdev.services" />
       <recent name="ee.ivkhkdev.helpers" />
       <recent name="ee.ivkhkdev" />
     </key>
@@ -136,7 +124,7 @@
       <visibility group="yarn" flag="true" />
     </myKeys>
   </component>
-  <component name="RunManager" selected="JUnit.All in JPTV23Library">
+  <component name="RunManager" selected="JUnit.AuthorServiceTest.add">
     <configuration name="All in JPTV23Library" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JPTV23Library" />
       <option name="PACKAGE_NAME" value="" />
@@ -172,22 +160,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AppHelperUserTest.create" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JPTV23Library" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ee.ivkhkdev.helpers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ee.ivkhkdev.helpers" />
-      <option name="MAIN_CLASS_NAME" value="ee.ivkhkdev.helpers.AppHelperUserTest" />
-      <option name="METHOD_NAME" value="create" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="AppHelperUserTest.printList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JPTV23Library" />
       <extension name="coverage">
@@ -204,13 +176,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AuthorServiceTest.add" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JPTV23Library" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ee.ivkhkdev.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ee.ivkhkdev.services" />
+      <option name="MAIN_CLASS_NAME" value="ee.ivkhkdev.services.AuthorServiceTest" />
+      <option name="METHOD_NAME" value="add" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AuthorServiceTest.add" />
         <item itemvalue="JUnit.All in JPTV23Library" />
         <item itemvalue="JUnit.AppHelperAuthorTest and 2 more" />
         <item itemvalue="JUnit.AppHelperUserTest" />
         <item itemvalue="JUnit.AppHelperUserTest.printList" />
-        <item itemvalue="JUnit.AppHelperUserTest.create" />
       </list>
     </recent_temporary>
   </component>
@@ -241,7 +229,9 @@
       <workItem from="1729488540800" duration="10000" />
       <workItem from="1729588481180" duration="14418000" />
       <workItem from="1729661023094" duration="60000" />
-      <workItem from="1729761570033" duration="10151000" />
+      <workItem from="1729761570033" duration="10442000" />
+      <workItem from="1730096493365" duration="133000" />
+      <workItem from="1730183139587" duration="2798000" />
     </task>
     <servers />
   </component>
