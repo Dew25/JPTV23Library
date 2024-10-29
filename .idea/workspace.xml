@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e142171b-185c-4bd1-9aa0-dcf7def45749" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/helpers/AppHelperAuthor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/helpers/AppHelperAuthor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ee/ivkhkdev/services/AuthorServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ee/ivkhkdev/services/AuthorServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,6 +59,13 @@
     "JUnit.AppTest.testInvalidTaskNumber.executor": "Run",
     "JUnit.AppTest.testPrintListUsers.executor": "Run",
     "JUnit.AuthorServiceTest.add.executor": "Run",
+    "JUnit.AuthorServiceTest.list.executor": "Run",
+    "JUnit.AuthorServiceTest.print.executor": "Debug",
+    "JUnit.AuthorServiceTest.restAdd_CreateReturnsNull.executor": "Run",
+    "JUnit.AuthorServiceTest.testAdd_AddExistingAuthor.executor": "Run",
+    "JUnit.AuthorServiceTest.testAdd_SuccessfulAdd.executor": "Run",
+    "JUnit.AuthorServiceTest.testList.executor": "Run",
+    "JUnit.AuthorServiceTest.testPrint.executor": "Run",
     "Maven.JPTV23Library [clean].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -125,59 +133,8 @@
       <visibility group="yarn" flag="true" />
     </myKeys>
   </component>
-  <component name="RunManager" selected="JUnit.AuthorServiceTest.add">
-    <configuration name="All in JPTV23Library" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JPTV23Library" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AppHelperAuthorTest and 2 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JPTV23Library" />
-      <option name="TEST_OBJECT" value="pattern" />
-      <patterns>
-        <pattern testClass="ee.ivkhkdev.helpers.AppHelperAuthorTest" />
-        <pattern testClass="ee.ivkhkdev.helpers.AppHelperBookTest" />
-        <pattern testClass="ee.ivkhkdev.helpers.AppHelperUserTest" />
-      </patterns>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AppHelperUserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JPTV23Library" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ee.ivkhkdev.helpers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ee.ivkhkdev.helpers" />
-      <option name="MAIN_CLASS_NAME" value="ee.ivkhkdev.helpers.AppHelperUserTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AppHelperUserTest.printList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JPTV23Library" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ee.ivkhkdev.helpers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ee.ivkhkdev.helpers" />
-      <option name="MAIN_CLASS_NAME" value="ee.ivkhkdev.helpers.AppHelperUserTest" />
-      <option name="METHOD_NAME" value="printList" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AuthorServiceTest.add" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.AuthorServiceTest.testAdd_AddExistingAuthor">
+    <configuration name="AuthorServiceTest.restAdd_CreateReturnsNull" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JPTV23Library" />
       <extension name="coverage">
         <pattern>
@@ -187,7 +144,71 @@
       </extension>
       <option name="PACKAGE_NAME" value="ee.ivkhkdev.services" />
       <option name="MAIN_CLASS_NAME" value="ee.ivkhkdev.services.AuthorServiceTest" />
-      <option name="METHOD_NAME" value="add" />
+      <option name="METHOD_NAME" value="restAdd_CreateReturnsNull" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuthorServiceTest.testAdd_AddExistingAuthor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JPTV23Library" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ee.ivkhkdev.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ee.ivkhkdev.services" />
+      <option name="MAIN_CLASS_NAME" value="ee.ivkhkdev.services.AuthorServiceTest" />
+      <option name="METHOD_NAME" value="testAdd_AddExistingAuthor" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuthorServiceTest.testAdd_SuccessfulAdd" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JPTV23Library" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ee.ivkhkdev.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ee.ivkhkdev.services" />
+      <option name="MAIN_CLASS_NAME" value="ee.ivkhkdev.services.AuthorServiceTest" />
+      <option name="METHOD_NAME" value="testAdd_SuccessfulAdd" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuthorServiceTest.testList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JPTV23Library" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ee.ivkhkdev.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ee.ivkhkdev.services" />
+      <option name="MAIN_CLASS_NAME" value="ee.ivkhkdev.services.AuthorServiceTest" />
+      <option name="METHOD_NAME" value="testList" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuthorServiceTest.testPrint" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JPTV23Library" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ee.ivkhkdev.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ee.ivkhkdev.services" />
+      <option name="MAIN_CLASS_NAME" value="ee.ivkhkdev.services.AuthorServiceTest" />
+      <option name="METHOD_NAME" value="testPrint" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -195,11 +216,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AuthorServiceTest.add" />
-        <item itemvalue="JUnit.All in JPTV23Library" />
-        <item itemvalue="JUnit.AppHelperAuthorTest and 2 more" />
-        <item itemvalue="JUnit.AppHelperUserTest" />
-        <item itemvalue="JUnit.AppHelperUserTest.printList" />
+        <item itemvalue="JUnit.AuthorServiceTest.testAdd_AddExistingAuthor" />
+        <item itemvalue="JUnit.AuthorServiceTest.testPrint" />
+        <item itemvalue="JUnit.AuthorServiceTest.restAdd_CreateReturnsNull" />
+        <item itemvalue="JUnit.AuthorServiceTest.testList" />
+        <item itemvalue="JUnit.AuthorServiceTest.testAdd_SuccessfulAdd" />
       </list>
     </recent_temporary>
   </component>
@@ -232,7 +253,7 @@
       <workItem from="1729661023094" duration="60000" />
       <workItem from="1729761570033" duration="10442000" />
       <workItem from="1730096493365" duration="133000" />
-      <workItem from="1730183139587" duration="3789000" />
+      <workItem from="1730183139587" duration="9782000" />
     </task>
     <servers />
   </component>
