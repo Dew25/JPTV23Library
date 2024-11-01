@@ -1,6 +1,7 @@
 package ee.ivkhkdev.helpers;
 
-import ee.ivkhkdev.input.Input;
+import ee.ivkhkdev.intefaces.AppHelper;
+import ee.ivkhkdev.intefaces.Input;
 import ee.ivkhkdev.model.Author;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,7 +16,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
-class AppHelperAuthorTest {
+class AuthorAppHelperTest {
     Input inputMock;
     AppHelper<Author> authorAppHelper;
     PrintStream defaultOut = System.out;
@@ -23,7 +24,7 @@ class AppHelperAuthorTest {
     @BeforeEach
     void setUp() {
         inputMock = Mockito.mock(Input.class);
-        authorAppHelper = new AppHelperAuthor(inputMock);
+        authorAppHelper = new AuthorAppHelper(inputMock);
         outMock = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outMock));
     }

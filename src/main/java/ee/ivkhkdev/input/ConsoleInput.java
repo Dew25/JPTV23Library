@@ -1,5 +1,7 @@
 package ee.ivkhkdev.input;
 
+import ee.ivkhkdev.intefaces.Input;
+
 import java.util.Scanner;
 
 public class ConsoleInput implements Input {

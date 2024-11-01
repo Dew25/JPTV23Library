@@ -1,4 +1,4 @@
-package ee.ivkhkdev.input;
+package ee.ivkhkdev.intefaces;
 
 public interface Input {
     String nextLine();

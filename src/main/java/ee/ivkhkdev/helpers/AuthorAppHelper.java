@@ -1,18 +1,17 @@
 package ee.ivkhkdev.helpers;
 
-import ee.ivkhkdev.input.Input;
+import ee.ivkhkdev.intefaces.AppHelper;
+import ee.ivkhkdev.intefaces.Input;
 import ee.ivkhkdev.model.Author;
 
 import java.util.List;
 
-public class AppHelperAuthor implements AppHelper<Author> {
+public class AuthorAppHelper implements AppHelper<Author> {
 
     private final Input input;
 
-
-    public AppHelperAuthor(Input input) {
+    public AuthorAppHelper(Input input) {
         this.input = input;
-
     }
 
     @Override
@@ -28,8 +27,6 @@ public class AppHelperAuthor implements AppHelper<Author> {
             return null;
         }
     }
-
-
 
     @Override
     public boolean printList(List<Author> authors) {

@@ -1,18 +1,19 @@
 package ee.ivkhkdev.helpers;
 
-import ee.ivkhkdev.input.Input;
+import ee.ivkhkdev.intefaces.AppHelper;
+import ee.ivkhkdev.intefaces.Input;
 import ee.ivkhkdev.model.Author;
 import ee.ivkhkdev.model.Book;
-import ee.ivkhkdev.services.Service;
+import ee.ivkhkdev.intefaces.Service;
 
 import java.util.List;
 
-public class AppHelperBook implements AppHelper<Book> {
+public class BookAppHelper implements AppHelper<Book> {
 
     private final Input input;
     private final Service<Author> authorService;
 
-    public AppHelperBook(Input input, Service<Author> authorService) {
+    public BookAppHelper(Input input, Service<Author> authorService) {
         this.input = input;
         this.authorService = authorService;
     }
