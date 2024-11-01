@@ -2,6 +2,7 @@ package ee.ivkhkdev.input;
 
 import ee.ivkhkdev.intefaces.Input;
 
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class ConsoleInput implements Input {
@@ -14,5 +15,6 @@ public class ConsoleInput implements Input {
     @Override
     public String nextLine(){
         return scanner.nextLine();
-    };
+    }
+
 }

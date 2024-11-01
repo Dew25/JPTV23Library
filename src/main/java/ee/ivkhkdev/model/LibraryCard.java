@@ -1,10 +1,11 @@
 package ee.ivkhkdev.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.UUID;
 
-public class LibraryCard {
+public class LibraryCard implements Serializable {
     private UUID id;
     private Book book;
     private User user;

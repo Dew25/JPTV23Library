@@ -33,6 +33,21 @@ public class Storage<T> implements Repository<T> {
         }
     }
 
+    public void saveAll(List<T> entities){
+        if(entities == null) entities = new ArrayList<>();
+        FileOutputStream fileOutputStream;
+        ObjectOutputStream objectOutputStream;
+        try {
+            fileOutputStream = new FileOutputStream(fileName);
+            objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(entities);
+            objectOutputStream.flush();
+        } catch (FileNotFoundException e) {
+            System.out.println("Не найден файл");
+        } catch (IOException e) {
+            System.out.println("Ошибка ввода");
+        }
+    }
 
 
     @Override

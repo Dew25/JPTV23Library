@@ -1,11 +1,22 @@
 package ee.ivkhkdev.services;
 
+import ee.ivkhkdev.helpers.LibraryCardAppHelper;
+import ee.ivkhkdev.intefaces.AppHelper;
+import ee.ivkhkdev.intefaces.Repository;
 import ee.ivkhkdev.intefaces.Service;
 import ee.ivkhkdev.model.LibraryCard;
 
 import java.util.List;
 
 public class LibraryCardService implements Service<LibraryCard> {
+    private final AppHelper<LibraryCard> libraryCardAppHelper;
+    private final Repository<LibraryCard> repository;
+
+    public LibraryCardService(AppHelper<LibraryCard> libraryCardAppHelper, Repository<LibraryCard> repository) {
+        this.libraryCardAppHelper=libraryCardAppHelper;
+        this.repository = repository;
+    }
+
     @Override
     public boolean add() {
         LibraryCard libraryCard = libraryCardAppHelper.create();
@@ -27,10 +38,17 @@ public class LibraryCardService implements Service<LibraryCard> {
 
     @Override
     public List<LibraryCard> list() {
-        return List.of();
-    }
-    public List<LibraryCard> returnBook(){
         return repository.load();
+    }
+
+    public boolean returnBook(){
+        List<LibraryCard> modifiedLibraryCards = ((LibraryCardAppHelper) libraryCardAppHelper).returnBack(this.list());
+        if(modifiedLibraryCards != null) {
+            repository.saveAll(modifiedLibraryCards);
+            return true;
+        }else{
+            return false;
+        }
     };
 
 }
