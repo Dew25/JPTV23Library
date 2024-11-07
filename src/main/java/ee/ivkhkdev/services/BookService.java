@@ -27,7 +27,16 @@ public class BookService implements Service {
             System.out.println("Error: "+e.toString());
             return false;
         }
+    }
 
+    @Override
+    public boolean edit() {
+        List<Book> modifiedBooks = appHelperBook.edit(repository.load());
+        if(modifiedBooks == null){
+            return false;
+        }
+        repository.saveAll(modifiedBooks);
+        return true;
     }
 
     @Override

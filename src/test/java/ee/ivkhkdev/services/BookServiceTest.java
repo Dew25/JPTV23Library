@@ -86,4 +86,20 @@ class BookServiceTest {
         assertEquals(mockBookList, result);
         verify(repository, times(1)).load(); // Убедиться, что метод load был вызван один раз
     }
+    @Test
+    void testEdit_Successfull(){
+        List<Book> books = List.of(new Book(),new Book());
+        when(repository.load()).thenReturn(books);
+        when(appHelperBook.edit(books)).thenReturn(books);
+        boolean result = bookService.edit();
+        assertTrue(result);
+    }
+    @Test
+    void testEdit_NotSuccessfull(){
+        List<Book> books = List.of(new Book(),new Book());
+        when(repository.load()).thenReturn(books);
+        when(appHelperBook.edit(books)).thenReturn(null);
+        boolean result = bookService.edit();
+        assertFalse(result);
+    }
 }

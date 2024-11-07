@@ -5,7 +5,9 @@ import ee.ivkhkdev.intefaces.Input;
 import ee.ivkhkdev.model.Author;
 import ee.ivkhkdev.model.Book;
 import ee.ivkhkdev.intefaces.Service;
+import ee.ivkhkdev.services.AuthorService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookAppHelper implements AppHelper<Book> {
@@ -66,5 +68,50 @@ public class BookAppHelper implements AppHelper<Book> {
             System.out.println("Error: "+e.toString());
             return false;
         }
+    }
+
+    @Override
+    public List<Book> edit(List<Book> books) {
+        try {
+            System.out.println("---- Редактирование книги -----");
+            this.printList(books);
+            System.out.print("Выберите номер книги: ");
+            int numberBook = Integer.parseInt(input.nextLine());
+            System.out.print("Название книги: "+books.get(numberBook-1).getTitle());
+            System.out.print("Изменить (y/n): ");
+            String choice = input.nextLine();
+            if(choice.equals("y")){
+                System.out.print("Новое название книги: ");
+                books.get(numberBook-1).setTitle(input.nextLine());
+            }
+            //Список авторов книги
+            ((AuthorService) authorService).getAppHelperAuthor().printList(books.get(numberBook-1).getAuthors());
+            System.out.print("Изменить авторов (y/n): ");
+            choice = input.nextLine();
+            if(choice.equals("y")){
+                System.out.print("Количество афторов книги: ");
+                int authorsCount = Integer.parseInt(input.nextLine());
+                authorService.print();
+                List<Author> listAllAuthors = authorService.list();
+                List<Author> bookAuthors = new ArrayList<>();
+                for(int i = 0; i < authorsCount; i++){
+                    System.out.printf("Номер автора %d из %d: ",i+1, authorsCount);
+                    int numberAuthor = Integer.parseInt(input.nextLine());
+                    bookAuthors.add(listAllAuthors.get(numberAuthor-1));
+                }
+                books.get(numberBook-1).setAuthors(bookAuthors);
+            }
+            System.out.print("Год издания книги: "+books.get(numberBook-1).getPublishedYear());
+            System.out.print("Изменить (y/n): ");
+            choice = input.nextLine();
+            if(choice.equals("y")){
+                System.out.print("Новый год издания: ");
+                books.get(numberBook-1).setPublishedYear(Integer.parseInt(input.nextLine()));
+            }
+            return books;
+        }catch (Exception e){
+            return null;
+        }
+
     }
 }

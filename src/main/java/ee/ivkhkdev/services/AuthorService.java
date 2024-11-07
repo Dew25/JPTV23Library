@@ -17,6 +17,10 @@ public class AuthorService implements Service {
         this.repository = repository;
     }
 
+    public AppHelper<Author> getAppHelperAuthor() {
+        return appHelperAuthor;
+    }
+
     public boolean add(){
         Author author = appHelperAuthor.create();
         if(author == null) return false;
@@ -27,6 +31,11 @@ public class AuthorService implements Service {
             System.out.println("Error: "+e.toString());
             return false;
         }
+    }
+
+    @Override
+    public boolean edit() {
+        return false;
     }
 
     @Override

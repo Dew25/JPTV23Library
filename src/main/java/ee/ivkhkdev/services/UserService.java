@@ -30,6 +30,16 @@ public class UserService implements Service {
 
     }
 
+    @Override
+    public boolean edit() {
+        List<User> modifiedUsers = appHelperUser.edit(repository.load());
+        if(modifiedUsers == null || modifiedUsers.size() == 0){
+            return false;
+        }
+        repository.saveAll(modifiedUsers);
+        return true;
+    }
+
     public boolean print() {
         return appHelperUser.printList(repository.load());
     }

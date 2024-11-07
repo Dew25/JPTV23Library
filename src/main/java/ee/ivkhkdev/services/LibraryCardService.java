@@ -32,6 +32,11 @@ public class LibraryCardService implements Service<LibraryCard> {
     }
 
     @Override
+    public boolean edit() {
+        return false;
+    }
+
+    @Override
     public boolean print() {
         return libraryCardAppHelper.printList(repository.load());
     }

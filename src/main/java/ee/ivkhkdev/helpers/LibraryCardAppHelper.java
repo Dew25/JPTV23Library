@@ -66,6 +66,12 @@ public class LibraryCardAppHelper implements AppHelper<LibraryCard> {
             return false;
         }
     }
+
+    @Override
+    public List<LibraryCard> edit(List<LibraryCard> libraryCards) {
+        return List.of();
+    }
+
     public List<LibraryCard> returnBack(List<LibraryCard>libraryCards){
         if(!this.printList(libraryCards)){
             return null;

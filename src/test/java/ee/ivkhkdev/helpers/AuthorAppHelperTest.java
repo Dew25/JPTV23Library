@@ -37,16 +37,25 @@ class AuthorAppHelperTest {
     }
 
     @Test
-    void create() {
+    void create_ShouldReturnAuthorWithValidInput() {
         when(inputMock.nextLine()).thenReturn("Lev","Tolstoy");
         Author actual = authorAppHelper.create();
         Author expected = new Author("Lev","Tolstoy");
         assertEquals(actual.getFirstname(), expected.getFirstname());
         assertEquals(actual.getLastname(), expected.getLastname());
     }
+    @Test
+    void create_ShouldReturnNullWhenExceptionOccurs() {
+        // Arrange
+        when(inputMock.nextLine()).thenThrow(new RuntimeException("Input error"));
+        // Act
+        Author author = authorAppHelper.create();
+        // Assert
+        assertNull(author);
+    }
 
     @Test
-    void printList() {
+    void printList_ShouldPrintAuthorsWhenListIsNotEmpty() {
         Author author = new Author("Lev","Tolstoy");
         List<Author> authors = new ArrayList<>();
         authors.add(author);
@@ -55,5 +64,23 @@ class AuthorAppHelperTest {
         assertTrue(result);
         String expectedString = "1. Lev Tolstoy";
         assertTrue(outMock.toString().contains(expectedString));
+    }
+    @Test
+    void printList_ShouldReturnFalseWhenListIsEmpty() {
+        // Arrange
+        List<Author> authors = List.of();
+        // Act
+        boolean result = authorAppHelper.printList(authors);
+        // Assert
+        assertFalse(result);
+    }
+    @Test
+    void printList_ShouldReturnFalseWhenExceptionOccurs() {
+        // Arrange
+        List<Author> authors = null; // Simulate an exception scenario
+        // Act
+        boolean result = authorAppHelper.printList(authors);
+        // Assert
+        assertFalse(result);
     }
 }

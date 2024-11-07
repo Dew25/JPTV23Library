@@ -47,4 +47,40 @@ public class UserAppHelper implements AppHelper<User> {
             return false;
         }
     }
+
+    @Override
+    public List<User> edit(List<User> users) {
+        try {
+            System.out.println("---- Редактирование книги -----");
+            this.printList(users);
+            System.out.print("Выберите пользователя: ");
+            int numberUser = Integer.parseInt(input.nextLine());
+            System.out.println("Имя: " + users.get(numberUser-1).getFirstName());
+            System.out.print("Изменить (y/n): ");
+            String choice = input.nextLine();
+            if(choice.equals("y")){
+                System.out.print("Новое имя: ");
+                users.get(numberUser-1).setFirstName(input.nextLine());
+            }
+            System.out.println("Фамилия: " + users.get(numberUser-1).getLastName());
+            System.out.print("Изменить (y/n): ");
+            choice = input.nextLine();
+            if(choice.equals("y")){
+                System.out.print("Новая фамилия: ");
+                users.get(numberUser-1).setLastName(input.nextLine());
+            }
+            System.out.println("Телефон: " + users.get(numberUser-1).getLastName());
+            System.out.print("Изменить (y/n): ");
+            choice = input.nextLine();
+            if(choice.equals("y")){
+                System.out.print("Новый телефон: ");
+                users.get(numberUser-1).setPhone(input.nextLine());
+            }
+            return users;
+        }catch (Exception e){
+            System.out.println("Error: "+e.getMessage());
+            return null;
+        }
+
+    }
 }

@@ -3,6 +3,7 @@ package ee.ivkhkdev.services;
 import static org.junit.jupiter.api.Assertions.*;
 
 import ee.ivkhkdev.intefaces.AppHelper;
+import ee.ivkhkdev.model.Book;
 import ee.ivkhkdev.model.User;
 import ee.ivkhkdev.intefaces.Repository;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,7 +30,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void testAddUserSuccess() {
+    void test_add_ShouldReturnTrue_WhenUserCreatedSuccessfully() {
         // Подготовка: создать пользователя и настроить заглушки
         User mockUser = new User(); // Предполагается, что у класса User есть конструктор по умолчанию
         when(mockAppHelperUser.create()).thenReturn(mockUser);
@@ -43,7 +44,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void testAddUserFailureWhenUserIsNull() {
+    void test_add_ShouldReturnFalse_WhenUserCreationFails() {
         // Настроить заглушку, чтобы create возвращал null
         when(mockAppHelperUser.create()).thenReturn(null);
 
@@ -97,5 +98,21 @@ public class UserServiceTest {
         // Проверка
         assertEquals(mockUserList, result);
         verify(mockRepository, times(1)).load(); // Убедиться, что метод load был вызван один раз
+    }
+    @Test
+    void testEdit_Successfull(){
+        List<User> users = List.of(new User("Ivan","Ivanov","123456"),new User("Jana","Tomme","234567"));
+        when(mockRepository.load()).thenReturn(users);
+        when(mockAppHelperUser.edit(users)).thenReturn(users);
+        boolean result = userService.edit();
+        assertTrue(result);
+    }
+    @Test
+    void testEdit_NotSuccessfull(){
+        List<User> users = List.of(new User("Ivan","Ivanov","123456"),new User("Jana","Tomme","234567"));
+        when(mockRepository.load()).thenReturn(users);
+        when(mockAppHelperUser.edit(users)).thenReturn(null);
+        boolean result = userService.edit();
+        assertFalse(result);
     }
 }

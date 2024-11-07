@@ -2,6 +2,8 @@ package ee.ivkhkdev.helpers;
 
 import ee.ivkhkdev.intefaces.AppHelper;
 import ee.ivkhkdev.intefaces.Input;
+import ee.ivkhkdev.model.Author;
+import ee.ivkhkdev.model.Book;
 import ee.ivkhkdev.model.User;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -37,17 +39,26 @@ class UserAppHelperTest {
     }
 
     @Test
-    void create() {
-        when(inputMock.nextLine()).thenReturn("Ivan","Ivanov","56565656");
-        User actual = appHelperUser.create();
-        User expected = new User("Ivan","Ivanov","56565656");
-        assertEquals(actual.getFirstName(), expected.getFirstName());
-        assertEquals(actual.getLastName(), expected.getLastName());
-        assertEquals(actual.getPhone(), expected.getPhone());
+    void create_ShouldReturnUserWithValidInput() {
+        when(inputMock.nextLine()).thenReturn("Ivan","Ivanov","123456");
+        User user = appHelperUser.create();
+        User expected = new User("Ivan","Ivanov","123456");
+        assertNotNull(user);
+        assertEquals(user.getFirstName(), expected.getFirstName());
+        assertEquals(user.getLastName(), expected.getLastName());
+        assertEquals(user.getPhone(), expected.getPhone());
     }
-
     @Test
-    void printList() {
+    void create_ShouldReturnNullWhenExceptionOccurs() {
+        // Arrange
+        when(inputMock.nextLine()).thenThrow(new RuntimeException("Input error"));
+        // Act
+        User user = appHelperUser.create();
+        // Assert
+        assertNull(user);
+    }
+    @Test
+    void printList_ShouldReturnTrueWhenUsersExist() {
         User user = new User("Ivan","Ivanov","56565656");
         List<User> users = new ArrayList<>();
         users.add(user);
@@ -56,5 +67,34 @@ class UserAppHelperTest {
         assertTrue(result);
         String expectedString = "1. Ivan Ivanov. 56565656";
         assertTrue(outMock.toString().contains(expectedString));
+    }
+    @Test
+    void printList_ShouldReturnFalseWhenUsersListIsEmpty() {
+        // Arrange
+        List<User> users = new ArrayList<>();
+        // Act
+        boolean result = appHelperUser.printList(users);
+        // Assert
+        assertFalse(result);
+    }
+    @Test
+    void edit_ShouldUpdateUserDetailsWhenValidInput(){
+        List<User> users = List.of(new User("Ivan","Ivanov","12345"));
+        when(inputMock.nextLine()).thenReturn("1","y", "Ivan1", "y","Ivanov1","y","1234567");
+        List<User> result = appHelperUser.edit(users);
+        assertNotNull(result);
+        assertEquals(result.get(0).getFirstName(), "Ivan1");
+        assertEquals(result.get(0).getLastName(), "Ivanov1");
+        assertEquals(result.get(0).getPhone(), "1234567");
+    }
+    @Test
+    void edit_ShouldReturnNullWhenExceptionOccurs() {
+        // Arrange
+        List<User> users = new ArrayList<>();
+        when(inputMock.nextLine()).thenThrow(new RuntimeException("Input error"));
+        // Act
+        List<User> result = appHelperUser.edit(users);
+        // Assert
+        assertNull(result);
     }
 }

@@ -37,6 +37,8 @@ public class App {
             System.out.println("5. Добавить автора");
             System.out.println("6. Выдать книгу");
             System.out.println("7. Вернуть книгу");
+            System.out.println("8. Редактировать книгу");
+            System.out.println("9. Редактировать пользователя");
             System.out.print("Введите номер задачи: ");
             int task = Integer.parseInt(input.nextLine()); // Используем input
             switch (task) {
@@ -93,6 +95,22 @@ public class App {
                     }else{
                         System.out.println("Книгу вернуть не удалось");
                     };
+                    break;
+                case 8:
+                    System.out.println("Редактирование книги");
+                    if(bookService.edit()){
+                        System.out.println("Книга изменена");
+                    }else {
+                        System.out.println("Книгу изменить не удалось");
+                    }
+                    break;
+                case 9:
+                    System.out.println("Редактирование пользователя");
+                    if(userService.edit()){
+                        System.out.println("Пользователь изменен");
+                    }else {
+                        System.out.println("Пользователя изменить не удалось");
+                    }
                     break;
                 default:
                     System.out.println("Выберите номер из списка задач!");
