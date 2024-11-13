@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e142171b-185c-4bd1-9aa0-dcf7def45749" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/factory/Factory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/factory/JavaConfigurator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/services/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/services/BookService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/factory/Configurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/factory/Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/factory/Factory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/factory/JavaConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/factory/JavaConfigurator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,9 +17,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -101,7 +98,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "dev",
+    "git-widget-placeholder": "serviceLocator",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/melnikov/IdeaProjects/JPTV23Library",
@@ -279,7 +276,7 @@
       <workItem from="1730788038427" duration="11709000" />
       <workItem from="1730960268166" duration="17323000" />
       <workItem from="1731305914454" duration="8276000" />
-      <workItem from="1731478738753" duration="6653000" />
+      <workItem from="1731478738753" duration="7328000" />
     </task>
     <servers />
   </component>

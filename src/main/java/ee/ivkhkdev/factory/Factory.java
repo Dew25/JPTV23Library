@@ -2,7 +2,7 @@ package ee.ivkhkdev.factory;
 
 public class Factory {
     private static final Factory FACTORY = null;
-    private final JavaConfigurator configurator;
+    private final Configurator configurator;
 
     private Factory(){
         this.configurator = new JavaConfigurator();

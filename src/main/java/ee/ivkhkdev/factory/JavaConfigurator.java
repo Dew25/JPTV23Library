@@ -23,7 +23,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class JavaConfigurator {
+public class JavaConfigurator implements Configurator{
+
     private Map<String,Object> map = new HashMap<>();
 
     public JavaConfigurator() {
@@ -46,6 +47,7 @@ public class JavaConfigurator {
         }
     }
 
+    @Override
     public Map<String, Object> getMap() {
         return map;
     }
