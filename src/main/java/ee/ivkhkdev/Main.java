@@ -1,6 +1,7 @@
 package ee.ivkhkdev;
 
 import ee.ivkhkdev.factory.Factory;
+import ee.ivkhkdev.factory.JavaConfigurator;
 import ee.ivkhkdev.helpers.LibraryCardAppHelper;
 import ee.ivkhkdev.intefaces.AppHelper;
 import ee.ivkhkdev.helpers.AuthorAppHelper;
@@ -27,7 +28,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        Factory factory = Factory.getInstance();
+        Factory factory = Factory.getInstance(new JavaConfigurator());
         Repository<Author> authorRepository = factory.getObject("authorRepository");
         Repository<User> userRepository = factory.getObject("userRepository");
         Repository<Book> bookRepository = factory.getObject("bookRepository");
