@@ -7,19 +7,24 @@ import ee.ivkhkdev.repositories.Repository;
 
 import java.util.List;
 
-public class UserService implements Service{
-    private final List<User> users;
+public class UserService<User> implements Service<User>{
+
     private final Repository<User> repository;
     private AppHelper<User> appHelperUser;
 
-    public UserService(List<User> users, AppHelper<User> appHelperUser, Repository<User> repository) {
-        this.users = users;
+    public UserService(AppHelper<User> appHelperUser, Repository<User> repository) {
+
         this.appHelperUser = appHelperUser;
         this.repository = repository;
+    }
+    @Override
+    public Repository<User> getRepository() {
+        return repository;
     }
 
     public boolean add() {
         User user = appHelperUser.create();
+        List<User> users = repository.load();
         if(user == null ) return false;
         for (int i = 0; i <= users.size(); i++){
             if(i == 0 ){
@@ -36,11 +41,9 @@ public class UserService implements Service{
     }
 
     public boolean print() {
-        return appHelperUser.printList(users);
+        return appHelperUser.printList(repository.load());
     }
 
-    @Override
-    public List list() {
-        return users;
-    }
+
+
 }

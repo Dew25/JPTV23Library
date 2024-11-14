@@ -3,6 +3,7 @@ package ee.ivkhkdev.helpers;
 import ee.ivkhkdev.input.Input;
 import ee.ivkhkdev.model.Author;
 import ee.ivkhkdev.model.Book;
+import ee.ivkhkdev.services.AuthorService;
 import ee.ivkhkdev.services.Service;
 
 import java.util.List;
@@ -32,10 +33,11 @@ public class AppHelperBook implements AppHelper<Book> {
             }
             System.out.print("Количество авторов книги: ");
             int countBookAuthors = Integer.parseInt(input.nextLine());
+            List<Author> authors = ((AuthorService<Author>)authorService).getRepository().load();
             for (int i = 0; i < countBookAuthors; i++){
                 System.out.printf("Выберите номер автора из списка (%d автор из %d%n): ", i+1,countBookAuthors);
                 int numberAuthor = Integer.parseInt(input.nextLine());
-                book.getAuthors().add(authorService.list().get(numberAuthor-1));
+                book.getAuthors().add(authors.get(numberAuthor-1));
             }
             System.out.print("Год издания книги: ");
             book.setPublishedYear(Integer.parseInt(input.nextLine()));

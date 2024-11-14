@@ -9,10 +9,8 @@ public class AppHelperAuthor implements AppHelper<Author> {
 
     private final Input input;
 
-
     public AppHelperAuthor(Input input) {
         this.input = input;
-
     }
 
     @Override

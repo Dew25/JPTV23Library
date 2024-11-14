@@ -6,20 +6,24 @@ import ee.ivkhkdev.repositories.Repository;
 
 import java.util.List;
 
-public class AuthorService implements Service{
+public class AuthorService<Author> implements Service<Author>{
 
-    private final List<Author> authors;
     private Repository<Author> repository;
     private AppHelper<Author> appHelperAuthor;
 
-    public AuthorService(List<Author> authors, AppHelper<Author> appHelperAuthor, Repository<Author> repository) {
-        this.authors = authors;
+    public AuthorService(AppHelper<Author> appHelperAuthor, Repository<Author> repository) {
+
         this.appHelperAuthor = appHelperAuthor;
         this.repository = repository;
+    }
+    @Override
+    public Repository<Author> getRepository() {
+        return repository;
     }
 
     public boolean add(){
         Author author = appHelperAuthor.create();
+        List<Author> authors = repository.load();
         if(author == null) return false;
         try {
             for (int i = 0; i <= authors.size(); i++){
@@ -42,11 +46,6 @@ public class AuthorService implements Service{
 
     @Override
     public boolean print() {
-        return appHelperAuthor.printList(authors);
-    }
-
-    @Override
-    public List<Author> list() {
-        return authors;
+        return appHelperAuthor.printList(repository.load());
     }
 }

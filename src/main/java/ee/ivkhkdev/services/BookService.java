@@ -7,20 +7,25 @@ import ee.ivkhkdev.repositories.Repository;
 
 import java.util.List;
 
-public class BookService implements Service{
+public class BookService<Book> implements Service<Book>{
 
-    private final List<Book> books;
+
     private Repository<Book> repository;
     private AppHelper<Book> appHelperBook;
 
-    public BookService(List<Book> books, AppHelper<Book> appHelperBook, Repository<Book> repository) {
-        this.books = books;
+    public BookService( AppHelper<Book> appHelperBook, Repository<Book> repository) {
         this.appHelperBook = appHelperBook;
         this.repository = repository;
     }
+    @Override
+    public Repository<Book> getRepository() {
+        return repository;
+    }
+
     public boolean add(){
         try {
             Book book = appHelperBook.create();
+            List<Book> books = repository.load();
             if(book == null) return false;
             for (int i = 0; i <= books.size(); i++){
                 if(i == 0 ){
@@ -43,11 +48,6 @@ public class BookService implements Service{
 
     @Override
     public boolean print() {
-        return appHelperBook.printList(books);
-    }
-
-    @Override
-    public List list() {
-        return books;
+        return appHelperBook.printList(repository.load());
     }
 }

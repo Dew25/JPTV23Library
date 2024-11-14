@@ -1,11 +1,13 @@
 package ee.ivkhkdev;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import ee.ivkhkdev.config.AppConfiguration;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 public class Main {
     public static void main(String[] args) {
-
-        App app = new App();
-        app.run();
+        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfiguration.class);
+        context.getBean(App.class).run();
     }
 }

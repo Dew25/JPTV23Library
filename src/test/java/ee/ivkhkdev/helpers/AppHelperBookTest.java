@@ -3,11 +3,14 @@ package ee.ivkhkdev.helpers;
 import ee.ivkhkdev.input.Input;
 import ee.ivkhkdev.model.Author;
 import ee.ivkhkdev.model.Book;
+import ee.ivkhkdev.repositories.Storage;
 import ee.ivkhkdev.services.AuthorService;
+import ee.ivkhkdev.repositories.Repository;
 import ee.ivkhkdev.services.Service;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import java.io.ByteArrayOutputStream;
@@ -23,12 +26,16 @@ class AppHelperBookTest {
     Input inputMock;
     AppHelper<Book> appHelperBook;
     Service<Author> authorServiceMock;
+
     PrintStream defaultOut = System.out;
     ByteArrayOutputStream outMock;
+    @Mock
+    private Repository<Author> repository;
     @BeforeEach
     void setUp() {
         inputMock = Mockito.mock(Input.class);
         authorServiceMock = Mockito.mock(AuthorService.class);
+        repository = Mockito.mock(Storage.class);
         appHelperBook = new AppHelperBook(inputMock,authorServiceMock);
         outMock = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outMock));
@@ -42,7 +49,6 @@ class AppHelperBookTest {
         System.setOut(defaultOut);
         outMock = null;
     }
-
     @Test
     void createWithAddAuthor() {
         when(inputMock.nextLine()).thenReturn("Voina i mir", "y");
@@ -56,7 +62,10 @@ class AppHelperBookTest {
         Author author = new Author("Lev","Tolstoy");
         List<Author> authors = new ArrayList<>();
         authors.add(author);
-        when(authorServiceMock.list()).thenReturn(authors);
+        when(authorServiceMock.getRepository()).thenReturn(repository);
+        when(authorServiceMock.getRepository()).thenReturn(repository);
+        when(((Service<Author>) authorServiceMock).getRepository().load()).thenReturn(authors);
+
         when(inputMock.nextLine()).thenReturn("Voina i mir", "n","1","1","2000");
         Book result = appHelperBook.create();
         Book expected = new Book("Voina i mir",authors,2000);
