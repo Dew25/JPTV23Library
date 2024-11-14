@@ -4,7 +4,7 @@ import ee.ivkhkdev.intefaces.Input;
 import ee.ivkhkdev.intefaces.Service;
 import ee.ivkhkdev.model.Author;
 import ee.ivkhkdev.model.Book;
-import ee.ivkhkdev.model.LibraryCard;
+import ee.ivkhkdev.model.LibraryCart;
 import ee.ivkhkdev.model.User;
 import ee.ivkhkdev.services.BookService;
 import ee.ivkhkdev.services.UserService;
@@ -18,9 +18,9 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-public class LibraryCardAppHelperTest {
+public class LibraryCartAppHelperTest {
 
-    private LibraryCardAppHelper libraryCardAppHelper;
+    private LibraryCartAppHelper libraryCardAppHelper;
     private Input mockInput;
     private Service<Book> mockBookService;
     private Service<User> mockUserService;
@@ -32,13 +32,13 @@ public class LibraryCardAppHelperTest {
         mockBookService = Mockito.mock(BookService.class);
         mockUserService = Mockito.mock(UserService.class);
 
-        // Инициализируем LibraryCardAppHelper с моками
-        libraryCardAppHelper = new LibraryCardAppHelper(mockInput, mockBookService, mockUserService);
+        // Инициализируем LibraryCartAppHelper с моками
+        libraryCardAppHelper = new LibraryCartAppHelper(mockInput, mockBookService, mockUserService);
     }
 
     @Test
     void testCreateSuccess() {
-        // Настройка моков для успешного создания LibraryCard
+        // Настройка моков для успешного создания LibraryCart
         Book mockBook = new Book();
         User mockUser = new User();
         when(mockBookService.print()).thenReturn(true);
@@ -49,7 +49,7 @@ public class LibraryCardAppHelperTest {
         when(mockInput.nextLine()).thenReturn("1"); // Выбор пользователя
 
         // Выполнение метода create
-        LibraryCard result = libraryCardAppHelper.create();
+        LibraryCart result = libraryCardAppHelper.create();
 
         // Проверка результата
         assertNotNull(result);
@@ -64,7 +64,7 @@ public class LibraryCardAppHelperTest {
         when(mockBookService.print()).thenReturn(false);
 
         // Выполнение метода create
-        LibraryCard result = libraryCardAppHelper.create();
+        LibraryCart result = libraryCardAppHelper.create();
 
         // Проверка результата
         assertNull(result);
@@ -80,7 +80,7 @@ public class LibraryCardAppHelperTest {
         when(mockUserService.print()).thenReturn(false);
 
         // Выполнение метода create
-        LibraryCard result = libraryCardAppHelper.create();
+        LibraryCart result = libraryCardAppHelper.create();
 
         // Проверка результата
         assertNull(result);
@@ -89,14 +89,14 @@ public class LibraryCardAppHelperTest {
 
     @Test
     void testPrintListWithNoReturnDates() {
-        // Подготовка: создать список LibraryCard с незавершенными книгами
+        // Подготовка: создать список LibraryCart с незавершенными книгами
         Book book = new Book("Test Book",List.of(new Author("firstnameAuthor","lastnameAuthor")), 2020);
         User user = new User("John", "Doe","123456");
-        LibraryCard libraryCard = new LibraryCard(book, user, LocalDate.now(), null); // Не возвращено
-        List<LibraryCard> libraryCards = List.of(libraryCard);
+        LibraryCart libraryCart = new LibraryCart(book, user, LocalDate.now(), null); // Не возвращено
+        List<LibraryCart> libraryCarts = List.of(libraryCart);
 
         // Выполняем метод printList
-        boolean result = libraryCardAppHelper.printList(libraryCards);
+        boolean result = libraryCardAppHelper.printList(libraryCarts);
 
         // Проверка
         assertTrue(result);
@@ -104,14 +104,14 @@ public class LibraryCardAppHelperTest {
 
     @Test
     void testPrintListWithAllReturnDates() {
-        // Подготовка: создать список LibraryCard с завершенными книгами
+        // Подготовка: создать список LibraryCart с завершенными книгами
         Book book = new Book("Test Book",List.of(new Author("firstnameAuthor","lastnameAuthor")), 2020);
         User user = new User("John", "Doe","123456");
-        LibraryCard libraryCard = new LibraryCard(book, user, LocalDate.now(), LocalDate.now()); // Книга возвращена
-        List<LibraryCard> libraryCards = List.of(libraryCard);
+        LibraryCart libraryCart = new LibraryCart(book, user, LocalDate.now(), LocalDate.now()); // Книга возвращена
+        List<LibraryCart> libraryCarts = List.of(libraryCart);
 
         // Выполняем метод printList
-        boolean result = libraryCardAppHelper.printList(libraryCards);
+        boolean result = libraryCardAppHelper.printList(libraryCarts);
 
         // Проверка
         assertFalse(result);
@@ -119,17 +119,17 @@ public class LibraryCardAppHelperTest {
 
     @Test
     void testReturnBackWithValidSelection() {
-        // Подготовка: создать список LibraryCard с незавершенной книгой
+        // Подготовка: создать список LibraryCart с незавершенной книгой
         Book book = new Book("Test Book",List.of(new Author("firstnameAuthor","lastnameAuthor")), 2020);
         User user = new User("John", "Doe","123456");
-        LibraryCard libraryCard = new LibraryCard(book, user, LocalDate.now(), null);
-        List<LibraryCard> libraryCards = List.of(libraryCard);
+        LibraryCart libraryCart = new LibraryCart(book, user, LocalDate.now(), null);
+        List<LibraryCart> libraryCarts = List.of(libraryCart);
 
         // Имитация ввода номера книги
         when(mockInput.nextLine()).thenReturn("1");
 
         // Выполняем метод returnBack
-        List<LibraryCard> result = libraryCardAppHelper.returnBack(libraryCards);
+        List<LibraryCart> result = libraryCardAppHelper.returnBack(libraryCarts);
 
         // Проверка
         assertNotNull(result);
@@ -138,14 +138,14 @@ public class LibraryCardAppHelperTest {
 
     @Test
     void testReturnBackWithNoBooksToReturn() {
-        // Подготовка: создать список LibraryCard с завершенной книгой
+        // Подготовка: создать список LibraryCart с завершенной книгой
         Book book = new Book("Test Book",List.of(new Author("firstnameAuthor","lastnameAuthor")), 2020);
         User user = new User("John", "Doe","123456");
-        LibraryCard libraryCard = new LibraryCard(book, user, LocalDate.now(), LocalDate.now()); // Книга возвращена
-        List<LibraryCard> libraryCards = List.of(libraryCard);
+        LibraryCart libraryCart = new LibraryCart(book, user, LocalDate.now(), LocalDate.now()); // Книга возвращена
+        List<LibraryCart> libraryCarts = List.of(libraryCart);
 
         // Выполняем метод returnBack
-        List<LibraryCard> result = libraryCardAppHelper.returnBack(libraryCards);
+        List<LibraryCart> result = libraryCardAppHelper.returnBack(libraryCarts);
 
         // Проверка
         assertNull(result); // Ожидаем null, так как нет книг для возврата

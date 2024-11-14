@@ -5,25 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e142171b-185c-4bd1-9aa0-dcf7def45749" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/factory/Configuration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/factory/Factory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/factory/JavaConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/helpers/AuthorAppHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/helpers/AuthorAppHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/helpers/BookAppHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/helpers/BookAppHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/helpers/LibraryCardAppHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/helpers/LibraryCardAppHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/helpers/UserAppHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/helpers/UserAppHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/intefaces/AppHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/intefaces/AppHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/intefaces/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/intefaces/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/services/AuthorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/services/AuthorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/services/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/services/BookService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/services/LibraryCardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/services/LibraryCardService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ee/ivkhkdev/helpers/AuthorAppHelperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ee/ivkhkdev/helpers/AuthorAppHelperTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ee/ivkhkdev/helpers/BookAppHelperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ee/ivkhkdev/helpers/BookAppHelperTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ee/ivkhkdev/helpers/UserAppHelperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ee/ivkhkdev/helpers/UserAppHelperTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ee/ivkhkdev/services/BookServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ee/ivkhkdev/services/BookServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ee/ivkhkdev/services/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ee/ivkhkdev/services/UserServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/helpers/LibraryCardAppHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/helpers/LibraryCartAppHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/model/LibraryCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/model/LibraryCart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/services/LibraryCardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ivkhkdev/services/LibraryCartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ee/ivkhkdev/helpers/LibraryCardAppHelperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ee/ivkhkdev/helpers/LibraryCartAppHelperTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ee/ivkhkdev/services/LibraryCardServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ee/ivkhkdev/services/LibraryCartServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,9 +25,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JUnit5 Test Class" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -56,7 +48,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Main.executor": "Run",
-    "JUnit.All in JPTV23Library.executor": "Coverage",
+    "JUnit.All in JPTV23Library.executor": "Run",
     "JUnit.AppHelperAuthorTest and 2 more.executor": "Run",
     "JUnit.AppHelperAuthorTest.create.executor": "Run",
     "JUnit.AppHelperAuthorTest.printList.executor": "Run",
@@ -177,6 +169,19 @@
     </myKeys>
   </component>
   <component name="RunManager" selected="JUnit.All in JPTV23Library">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ee.ivkhkdev.Main" />
+      <module name="JPTV23Library" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ee.ivkhkdev.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="All in JPTV23Library" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JPTV23Library" />
       <option name="PACKAGE_NAME" value="" />
@@ -233,29 +238,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceTest.testEdit_Successfull" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JPTV23Library" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ee.ivkhkdev.services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ee.ivkhkdev.services" />
-      <option name="MAIN_CLASS_NAME" value="ee.ivkhkdev.services.UserServiceTest" />
-      <option name="METHOD_NAME" value="testEdit_Successfull" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in JPTV23Library" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.BookServiceTest.testEdit_Successfull" />
         <item itemvalue="JUnit.BookServiceTest.testEdit_NotSuccessfull" />
         <item itemvalue="JUnit.UserServiceTest.testEdit_NotSuccessfull" />
-        <item itemvalue="JUnit.UserServiceTest.testEdit_Successfull" />
       </list>
     </recent_temporary>
   </component>

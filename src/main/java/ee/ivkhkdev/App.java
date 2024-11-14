@@ -1,22 +1,21 @@
 package ee.ivkhkdev;
 
-import ee.ivkhkdev.intefaces.AppHelper;
 import ee.ivkhkdev.intefaces.Input;
 import ee.ivkhkdev.model.Author;
 import ee.ivkhkdev.model.Book;
-import ee.ivkhkdev.model.LibraryCard;
+import ee.ivkhkdev.model.LibraryCart;
 import ee.ivkhkdev.model.User;
 import ee.ivkhkdev.intefaces.Service;
-import ee.ivkhkdev.services.LibraryCardService;
+import ee.ivkhkdev.services.LibraryCartService;
 
 public class App {
-    private final Service<LibraryCard> libraryCardService;
+    private final Service<LibraryCart> libraryCardService;
     private Input input;
     private Service<User> userService;
     private Service<Book> bookService;
     private Service<Author> authorService;
 
-    public App(Input input, Service<Book> bookService, Service<User> userService, Service<Author> authorService, Service<LibraryCard> libraryCardService) {
+    public App(Input input, Service<Book> bookService, Service<User> userService, Service<Author> authorService, Service<LibraryCart> libraryCardService) {
         this.input = input;
         this.bookService = bookService;
         this.userService = userService;
@@ -77,7 +76,7 @@ public class App {
                     if(authorService.add()){
                         System.out.println("Автор добавлен");
                     }else{
-                        System.out.println("Книгу добавить не удалось");
+                        System.out.println("Автора добавить не удалось");
                     };
                     break;
                 case 6:
@@ -90,7 +89,7 @@ public class App {
                     break;
                 case 7:
                     System.out.println("Вернуть книгу");
-                    if(((LibraryCardService)libraryCardService).returnBook()){
+                    if(((LibraryCartService)libraryCardService).returnBook()){
                         System.out.println("Книга возврощена");
                     }else{
                         System.out.println("Книгу вернуть не удалось");
