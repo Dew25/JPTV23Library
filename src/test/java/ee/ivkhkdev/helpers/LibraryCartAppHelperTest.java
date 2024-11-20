@@ -1,13 +1,13 @@
 package ee.ivkhkdev.helpers;
 
 import ee.ivkhkdev.intefaces.Input;
-import ee.ivkhkdev.intefaces.Service;
+import ee.ivkhkdev.intefaces.AppService;
 import ee.ivkhkdev.model.Author;
 import ee.ivkhkdev.model.Book;
 import ee.ivkhkdev.model.LibraryCart;
 import ee.ivkhkdev.model.User;
-import ee.ivkhkdev.services.BookService;
-import ee.ivkhkdev.services.UserService;
+import ee.ivkhkdev.services.BookAppService;
+import ee.ivkhkdev.services.UserAppService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -22,15 +22,15 @@ public class LibraryCartAppHelperTest {
 
     private LibraryCartAppHelper libraryCardAppHelper;
     private Input mockInput;
-    private Service<Book> mockBookService;
-    private Service<User> mockUserService;
+    private AppService<Book> mockBookService;
+    private AppService<User> mockUserService;
 
     @BeforeEach
     void setUp() {
         // Создаем моки для зависимостей
         mockInput = Mockito.mock(Input.class);
-        mockBookService = Mockito.mock(BookService.class);
-        mockUserService = Mockito.mock(UserService.class);
+        mockBookService = Mockito.mock(BookAppService.class);
+        mockUserService = Mockito.mock(UserAppService.class);
 
         // Инициализируем LibraryCartAppHelper с моками
         libraryCardAppHelper = new LibraryCartAppHelper(mockInput, mockBookService, mockUserService);

@@ -1,19 +1,19 @@
 package ee.ivkhkdev.services;
 
 import ee.ivkhkdev.intefaces.AppHelper;
-import ee.ivkhkdev.intefaces.Service;
+import ee.ivkhkdev.intefaces.AppService;
 import ee.ivkhkdev.model.User;
-import ee.ivkhkdev.intefaces.Repository;
+import ee.ivkhkdev.intefaces.AppRepository;
 
 
 import java.util.List;
 
-public class UserService implements Service {
+public class UserAppService implements AppService<User> {
 
-    private final Repository<User> repository;
+    private final AppRepository<User> repository;
     private AppHelper<User> appHelperUser;
 
-    public UserService(AppHelper<User> appHelperUser, Repository<User> repository) {
+    public UserAppService(AppHelper<User> appHelperUser, AppRepository<User> repository) {
         this.appHelperUser = appHelperUser;
         this.repository = repository;
     }

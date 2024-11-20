@@ -1,13 +1,13 @@
 package ee.ivkhkdev.repositories;
 
 
-import ee.ivkhkdev.intefaces.Repository;
+import ee.ivkhkdev.intefaces.AppRepository;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Storage<T> implements Repository<T> {
+public class Storage<T> implements AppRepository<T> {
 
     private String fileName;
 

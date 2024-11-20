@@ -2,7 +2,7 @@ package ee.ivkhkdev.helpers;
 
 import ee.ivkhkdev.intefaces.AppHelper;
 import ee.ivkhkdev.intefaces.Input;
-import ee.ivkhkdev.intefaces.Service;
+import ee.ivkhkdev.intefaces.AppService;
 import ee.ivkhkdev.model.Book;
 import ee.ivkhkdev.model.LibraryCart;
 import ee.ivkhkdev.model.User;
@@ -12,10 +12,10 @@ import java.util.List;
 
 public class LibraryCartAppHelper implements AppHelper<LibraryCart> {
     private final Input input;
-    private final Service<Book> bookService;
-    private final Service<User> userService;
+    private final AppService<Book> bookService;
+    private final AppService<User> userService;
 
-    public LibraryCartAppHelper(Input input, Service<Book> bookService, Service<User> userService) {
+    public LibraryCartAppHelper(Input input, AppService<Book> bookService, AppService<User> userService) {
         this.input = input;
         this.bookService = bookService;
         this.userService = userService;

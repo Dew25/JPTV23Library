@@ -2,7 +2,7 @@ package ee.ivkhkdev.services;
 
 import ee.ivkhkdev.helpers.LibraryCartAppHelper;
 import ee.ivkhkdev.intefaces.AppHelper;
-import ee.ivkhkdev.intefaces.Repository;
+import ee.ivkhkdev.intefaces.AppRepository;
 import ee.ivkhkdev.model.LibraryCart;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,18 +15,18 @@ import static org.mockito.Mockito.*;
 
 public class LibraryCartServiceTest {
 
-    private LibraryCartService libraryCartService;
+    private LibraryCartAppService libraryCartService;
     private AppHelper<LibraryCart> mockLibraryCardAppHelper;
-    private Repository<LibraryCart> mockRepository;
+    private AppRepository<LibraryCart> mockRepository;
 
     @BeforeEach
     void setUp() {
         // Создаем моки для зависимостей
         mockLibraryCardAppHelper = Mockito.mock(AppHelper.class);
-        mockRepository = Mockito.mock(Repository.class);
+        mockRepository = Mockito.mock(AppRepository.class);
 
-        // Инициализируем LibraryCartService с моками
-        libraryCartService = new LibraryCartService(mockLibraryCardAppHelper, mockRepository);
+        // Инициализируем LibraryCartAppService с моками
+        libraryCartService = new LibraryCartAppService(mockLibraryCardAppHelper, mockRepository);
     }
 
     @Test
@@ -109,7 +109,7 @@ public class LibraryCartServiceTest {
         when(mockRepository.load()).thenReturn(mockLibraryCartList);
 
         // Вызов метода returnBook
-        boolean result = new LibraryCartService(mockLibraryCardAppHelperCast, mockRepository).returnBook();
+        boolean result = new LibraryCartAppService(mockLibraryCardAppHelperCast, mockRepository).returnBook();
 
         // Проверка
         assertTrue(result);
@@ -125,7 +125,7 @@ public class LibraryCartServiceTest {
         when(mockRepository.load()).thenReturn(mockLibraryCartList);
 
         // Вызов метода returnBook
-        boolean result = new LibraryCartService(mockLibraryCardAppHelperCast, mockRepository).returnBook();
+        boolean result = new LibraryCartAppService(mockLibraryCardAppHelperCast, mockRepository).returnBook();
 
         // Проверка
         assertFalse(result);

@@ -2,17 +2,17 @@ package ee.ivkhkdev.services;
 
 import ee.ivkhkdev.helpers.LibraryCartAppHelper;
 import ee.ivkhkdev.intefaces.AppHelper;
-import ee.ivkhkdev.intefaces.Repository;
-import ee.ivkhkdev.intefaces.Service;
+import ee.ivkhkdev.intefaces.AppRepository;
+import ee.ivkhkdev.intefaces.AppService;
 import ee.ivkhkdev.model.LibraryCart;
 
 import java.util.List;
 
-public class LibraryCartService implements Service<LibraryCart> {
+public class LibraryCartAppService implements AppService<LibraryCart> {
     private final AppHelper<LibraryCart> libraryCartAppHelper;
-    private final Repository<LibraryCart> repository;
+    private final AppRepository<LibraryCart> repository;
 
-    public LibraryCartService(AppHelper<LibraryCart> libraryCartAppHelper, Repository<LibraryCart> repository) {
+    public LibraryCartAppService(AppHelper<LibraryCart> libraryCartAppHelper, AppRepository<LibraryCart> repository) {
         this.libraryCartAppHelper =libraryCartAppHelper;
         this.repository = repository;
     }

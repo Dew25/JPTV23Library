@@ -2,7 +2,7 @@ package ee.ivkhkdev.intefaces;
 
 import java.util.List;
 
-public interface Service<T> {
+public interface AppService<T> {
     boolean add();
     boolean edit();
     boolean print();

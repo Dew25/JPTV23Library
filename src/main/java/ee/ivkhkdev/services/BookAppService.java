@@ -1,19 +1,19 @@
 package ee.ivkhkdev.services;
 
 import ee.ivkhkdev.intefaces.AppHelper;
-import ee.ivkhkdev.intefaces.Service;
+import ee.ivkhkdev.intefaces.AppService;
 import ee.ivkhkdev.model.Book;
-import ee.ivkhkdev.intefaces.Repository;
+import ee.ivkhkdev.intefaces.AppRepository;
 
 
 import java.util.List;
 
-public class BookService implements Service {
+public class BookAppService implements AppService {
 
-    private Repository<Book> repository;
+    private AppRepository<Book> repository;
     private AppHelper<Book> appHelperBook;
 
-    public BookService(AppHelper<Book> appHelperBook, Repository<Book> repository) {
+    public BookAppService(AppHelper<Book> appHelperBook, AppRepository<Book> repository) {
         this.appHelperBook = appHelperBook;
         this.repository = repository;
     }

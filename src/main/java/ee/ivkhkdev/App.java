@@ -5,17 +5,24 @@ import ee.ivkhkdev.model.Author;
 import ee.ivkhkdev.model.Book;
 import ee.ivkhkdev.model.LibraryCart;
 import ee.ivkhkdev.model.User;
-import ee.ivkhkdev.intefaces.Service;
-import ee.ivkhkdev.services.LibraryCartService;
+import ee.ivkhkdev.intefaces.AppService;
+import ee.ivkhkdev.services.LibraryCartAppService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-public class App {
-    private final Service<LibraryCart> libraryCardService;
+@SpringBootApplication
+public class App implements CommandLineRunner {
+
+    private final AppService<LibraryCart> libraryCardService;
     private Input input;
-    private Service<User> userService;
-    private Service<Book> bookService;
-    private Service<Author> authorService;
+    private AppService<User> userService;
+    private AppService<Book> bookService;
+    private AppService<Author> authorService;
 
-    public App(Input input, Service<Book> bookService, Service<User> userService, Service<Author> authorService, Service<LibraryCart> libraryCardService) {
+    @Autowired
+    public App(Input input, AppService<Book> bookService, AppService<User> userService, AppService<Author> authorService, AppService<LibraryCart> libraryCardService) {
         this.input = input;
         this.bookService = bookService;
         this.userService = userService;
@@ -23,7 +30,11 @@ public class App {
         this.libraryCardService = libraryCardService;
     }
 
-    public void run() {
+    public static void main(String[] args) {
+        SpringApplication.run(App.class,args);
+    }
+    @Override
+    public void run(String... args) throws Exception {
         boolean repeat = true;
         System.out.println("======= JPTV23Library =========");
         do {
@@ -89,7 +100,7 @@ public class App {
                     break;
                 case 7:
                     System.out.println("Вернуть книгу");
-                    if(((LibraryCartService)libraryCardService).returnBook()){
+                    if(((LibraryCartAppService)libraryCardService).returnBook()){
                         System.out.println("Книга возврощена");
                     }else{
                         System.out.println("Книгу вернуть не удалось");
@@ -119,4 +130,6 @@ public class App {
         } while (repeat);
         System.out.println("До свидания! :)");
     }
+
+
 }
